@@ -1,0 +1,13 @@
+.img{
+     width: 100%;
+}
+.titulo{
+     font-family: poppins;
+     font-weight: bolder;
+     font-size: 1.4rem;
+}
+.contenido{
+     font-family: poppins;
+     font-weight: 400;
+     font-size: .9rem;
+}

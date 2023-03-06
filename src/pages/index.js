@@ -1,44 +1,71 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import styles from '@/styles/Home.module.css'
 import Layout from '@/components/Layout'
 import { Box, Grid, Typography } from '@mui/material'
-import Card from '@mui/material/Card';
-import CardContent from '@mui/material/CardContent';
-import AccessTimeIcon from '@mui/icons-material/AccessTime';
-import ThumbDownIcon from '@mui/icons-material/ThumbDown';
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import Button from '@mui/material/Button';
-import CardActions from '@mui/material/CardActions';
-import Avatar from '@mui/material/Avatar';
-import IconButton from '@mui/material/IconButton';
-import Tooltip from '@mui/material/Tooltip';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
-import EconomiaCards from '@/components/EconomiaCards';
 import style from '../styles/index.module.css';
+import { ParallaxProvider } from 'react-scroll-parallax'
+import { useDispatch, useSelector } from 'react-redux'
+import { setDatos, setDatosDeportes, setDatosSalud, setDatosTecnologia, setDatosGeneral } from '@/feactures/datos/datosSlice';
+import PropTypes from 'prop-types';
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import ArrowCircleUpIcon from '@mui/icons-material/ArrowCircleUp';
+import ArrowCircleDownIcon from '@mui/icons-material/ArrowCircleDown';
+import Tabs from '@mui/joy/Tabs';
+import TabList from '@mui/joy/TabList';
+import Tab from '@mui/joy/Tab';
+import TabPanel from '@mui/joy/TabPanel';
+import { useState } from 'react';
 
-let newsPaginas = [{
-  name:'clarin',
-  dominio:'clarin.com',
-  img:'https://pbs.twimg.com/media/C2QJ3wnW8AAM8a9.jpg'
-},{
-  name:'La Nacion',
-  dominio:'lanacion.com.ar',
-  img:'https://arc-static.glanacion.com/pf/resources/images/logo-lanacion.svg?d=1120'
-},{
-  name:'La Gaceta',
-  dominio:'lagaceta.com.ar',
-  img:'https://www.lagaceta.com.ar/assets/2022/images/brand.svg'
-},{
-  name:'Infobae',
-  dominio:'infobae.com',
-  img:'https://www.infobae.com/pf/resources/images/logo_infobae_naranja.svg?d=1271'
-},{
-  name:'Ambito',
-  dominio:'ambito.com',
-  img:'https://www.ambito.com/css-custom/239/images/logo-239-2020v2.svg'
-}]
-export default function Home( { datos,datosEconomicos,datosDeporte } ) {
+import TabNoticias from '@/components/TabNoticias';
+import "swiper/css/pagination";
+import SwiperCore, { Pagination, Navigation, Scrollbar, A11y } from "swiper";
+import CardFirst from '@/components/CardFirst';
+import { ObtenerDatos } from '@/functionExterna';
+
+SwiperCore.use( [Navigation, Pagination, Scrollbar, A11y] );
+// 
+
+
+function IconContainer( props ) {
+  const { value, ...other } = props;
+  return <span {...other}>{customIcons[value].icon}</span>;
+}
+
+IconContainer.propTypes = {
+  value: PropTypes.number.isRequired,
+};
+
+const horaPublicacion = ( e ) => {
+  const moment = require( 'moment-timezone' );
+  const fecha = e;
+  const fechaMoment = moment.tz( fecha, 'UTC' ).tz( 'America/Argentina/Buenos_Aires' );
+  const diff = moment().diff( fechaMoment );
+  const duracion = moment.duration( diff );
+
+  if ( duracion.asHours() >= 24 ) {
+    return ( `${Math.floor( duracion.asDays() )}d` );
+  } else if ( duracion.asHours() >= 1 ) {
+    return ( `${Math.floor( duracion.asHours() )}h` );
+  } else {
+    return ( `${Math.floor( duracion.asMinutes() )}min` );
+  }
+}
+
+
+export default function Home( { datos, datosDeporte, datosSalud, datosTecnologia, datosGeneral } ) {
+
+  const dispatch = useDispatch();
+  dispatch( setDatos( datos ) )
+  dispatch( setDatosDeportes( datosDeporte ) )
+  dispatch( setDatosSalud( datosSalud ) )
+  dispatch( setDatosTecnologia( datosTecnologia ) )
+  dispatch( setDatosGeneral( datosGeneral ) )
+  datosTecnologia = useSelector( ( state ) => state.datos.datosTecnologia );
+  let datosStore = useSelector( ( state ) => state.datos.datos );
+  console.log(datos);
+  const [index, setIndex] = useState( 0 );
+
+
   return (
     <Layout>
       <Head>
@@ -49,130 +76,144 @@ export default function Home( { datos,datosEconomicos,datosDeporte } ) {
         </script>
       </Head>
       {/* cards Noticias */}
-      <Grid container spacing={4}>
-        {newsPaginas.map( ( e ) => {
-          return ( <Grid item md='12'>
-            <Card sx={{ width: '130px', margin: '5px' }} >
-              <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
-                <img src={e.img} width={50} height={50} />
-                <Typography variant="h7" component="span" sx={{fontWeight:'700'}}>
-                  {e.name}
-                </Typography>
-              </CardContent>
-            </Card>
-
-          </Grid> )
-        } )}
-      </Grid>
-
-      {/* ................ */}
-      <Typography variant='h3' component='h3' ml={2} my={2} className={style.titulo} sx={{ fontSize: '1.2rem' }}>
-        Noticias del dia
-      </Typography>
-      {/* ............... */}
-      <Grid container spacing={0}>
-        {( datos.articles ).slice( 0, 3 ).map( ( e ) => {
-          return (
-            <Grid item xs={4} sx={{ height: '100%' }} p={0} data-aos="flip-left"
-              data-aos-easing="ease-out-cubic"
-              data-aos-duration="2000">
-              <Card sx={{ width: 'fit-content', margin: '5px', height: '300px' }}  >
-                <CardContent sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: 0 }}>
-                  <img src={e.urlToImage} style={{ width: '100%', height: '130px', objectFit: 'cover' }} />
-                  <Box ml={2} p={1}>
-                    <Typography variant="h2" component="span" sx={{ fontSize: '1rem', fontWeight: 'bold' }}>
-                      {e.title}
-                    </Typography>
-                    {/*  */}
-                    <Grid container spacing={2} ml={'1px'} mt={'1px'}>
-                      <Grid item xs={6} sx={{ display: 'flex', alignItems: 'center' }}>
-                        <ThumbUpIcon sx={{ width: '17px' }} color="success" />
-                        <Typography variant="caption" ml={.3} color="success" sx={{ fontSize: '.7rem', opacity: .8, fontWeight: 600 }}>
-                          122
-                        </Typography>
+      <div>
+        {/* 1 corrusel */}
+        <Box sx={{ width: '100%', height: '300px', color: 'red' }}>
+          <Swiper className="mySwiper" direction={"vertical"} pagination={{
+            clickable: true,
+          }} modules={[Pagination]}
+            navigation={{
+              nextEl: '.btn-next',
+              prevEl: '.btn-prev',
+            }}>
+            {
+              datosGeneral.articles.slice( 0, 10 ).map( ( e, i ) => {
+                return (
+                  <SwiperSlide key={`${'op'}${i * 20}`}>
+                    <img src={e.urlToImage} alt="news" style={{ filter: 'brightness(0.5)' }} />
+                    <Grid container className={style.contentInfo}>
+                      <Grid item sx={{ display: 'flex', flexDirection: 'column', gap: '10px', width: 'fit-content', marginTop: '10px' }}>
+                        <ArrowCircleUpIcon sx={{ zIndex: 1, color: '#fff', fontSize: '1.5rem', cursor: 'pointer' }}
+                          className='btn-prev' />
+                        <ArrowCircleDownIcon sx={{ zIndex: 1, color: '#fff', fontSize: '1.5rem', cursor: 'pointer' }}
+                          className='btn-next' />
                       </Grid>
-                      <Grid item xs={3} sx={{ display: 'flex', alignItems: 'center' }}>
-                        <ThumbDownIcon sx={{ width: '17px' }} color="error" />
-                        <Typography variant="caption" ml={.3} color="error" sx={{ fontSize: '.7rem', opacity: .8, fontWeight: 600 }}>
-                          122
-                        </Typography>
+                      <Grid item xs={11} ml={1} sx={{ display: 'flex', flexDirection: 'column', justifyContent: 'start' }}>
+                        <h1 className={style.tituloH1}>
+                          {
+                            e.title
+                          }
+                        </h1>
+                        <span className={style.infoHora}>{horaPublicacion( e.publishedAt )} - hoy</span>
                       </Grid>
+
                     </Grid>
-                    {/*  */}
-                    <Box ml={5} mt={.5} sx={{ display: 'flex', justifyContent: 'end', alignItems: 'center' }} p={0}>
-                      <AccessTimeIcon sx={{ width: 15 }} />
-                      <Typography variant="caption" ml={.5} sx={{ fontSize: '.7rem', opacity: .8, fontWeight: 600 }}>
-                        2h
-                      </Typography>
-                    </Box>
-                  </Box>
 
-                </CardContent>
-              </Card>
-            </Grid>
-          )
-        } )}
-      </Grid>
+                  </SwiperSlide>
+                );
+              } )
+            }
 
-      {/* ............... */}
-      <Card sx={{ width: '98%', margin: '5px' }} data-aos="flip-up" >
-        <CardContent sx={{ display: 'flex', flexDirection: 'row', alignItems: 'center' }}>
-          <img src={datos.articles[4].urlToImage} width={250} height={250} />
-          <Box ml={2} sx={{ height: '100%', display: 'flex', flexDirection: 'column', alignItems: 'start' }}>
-            <Typography variant="caption" component="span" sx={{ fontSize: '.9rem' }}>
-              {datos.articles[4].author}
-            </Typography>
-            <Typography variant="h1" component="h1" sx={{ fontSize: '1.9rem' }}>
-              {datos.articles[4].title}
-            </Typography>
 
-            <Typography variant="body1" mt={1} component="h1" sx={{ fontSize: '1.1rem' }}>
-              {datos.articles[4].content}
-            </Typography>
-          </Box>
-        </CardContent>
-        <CardActions disableSpacing>
-          <Avatar alt="Eemy Sharp" src="/static/images/avatar/2.jpg" sx={{ bgcolor: 'blue' }} />
-          <Button color="primary">Clarin</Button>
-          <Tooltip title="Ver mas" sx={{ marginLeft: 'auto' }}>
-            <IconButton>
-              ir
-              <ArrowForwardIosIcon />
-            </IconButton>
-          </Tooltip>
-        </CardActions>
-      </Card>
+          </Swiper>
+        </Box>
 
-        {/* ....... noticias economicas ........ */}
+        {/* ... cards .... */}
         <Typography variant='h3' component='h3' ml={2} my={2} className={style.titulo} sx={{ fontSize: '1.2rem' }}>
-        Economia
-      </Typography>
-      <EconomiaCards datosEconomicos={datosEconomicos}/>
-      {/* ........ deportes ..... */}
-      <Typography variant='h3' component='h3' ml={2} my={2} className={style.titulo} sx={{ fontSize: '1.2rem' }}>
-        Deportes
-      </Typography>
-      <EconomiaCards datosEconomicos={datosDeporte}/>
+          Noticias del dia
+        </Typography>
+        {/* ............... */}
+        <Grid container p={1} columnSpacing={1} alignItems={'center'} justifyContent={'space-between'}>
+          {
+            datosGeneral.articles.slice( 10, 13 ).map( ( e, i ) => {
+              return (
+                <CardFirst datos={e} key={`${'e'}${i * 20}`} />
+              )
+            } )
+          }
+        </Grid>
 
-    </Layout>
+        {/* .... tabs submenu... */}
+        <Tabs aria-label="Basic tabs" defaultValue={0} sx={{ borderRadius: 'lg' }}
+          value={index}
+          onChange={( event, value ) => setIndex( value )}>
+          <TabList sx={{
+            mt: '80px', position: 'relative', left: '30%', width: '300px',
+            fontFamily: 'poppins', fontWeight: 'bolder', fontSize: '1.2rem'
+          }}
+          >
+            <Tab
+              variant={index === 0 ? 'soft' : 'plain'}
+              sx={{ background: index === 0 ? '#A51717' : '#000' }}>
+              Economia
+            </Tab>
+            <Tab
+              variant={index === 1 ? 'soft' : 'plain'}
+              sx={{ background: index === 1 ? '#A51717' : '#000' }}>
+              Salud</Tab>
+            <Tab
+              variant={index === 2 ? 'soft' : 'plain'}
+              sx={{ background: index === 2 ? '#A51717' : '#000' }} >
+              Deporte</Tab>
+            <Tab
+              variant={index === 3 ? 'soft' : 'plain'}
+              sx={{ background: index === 3 ? '#A51717' : '#000' }} >
+              Tecnologia</Tab>
+           
+          </TabList>
+          <TabPanel value={0} sx={{ p: 2 }}>
+            <TabNoticias datos={datosStore} />
+          </TabPanel>
+          <TabPanel value={1} sx={{ p: 2 }}>
+            <TabNoticias datos={datosSalud} />
+          </TabPanel>
+          <TabPanel value={2} sx={{ p: 2 }}>
+            <TabNoticias datos={datosDeporte} />
+          </TabPanel>
+          <TabPanel value={3} sx={{ p: 2 }}>
+            <TabNoticias datos={datosTecnologia} />
+
+          </TabPanel>
+        </Tabs>
+
+      </div>
+      {/* ................ */}
+
+    </Layout >
   )
 }
 
 
 export async function getServerSideProps( context ) {
-  let data = await fetch( 'https://newsapi.org/v2/everything?pageSize=6&language=es&domains=lanacion.com.ar&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
-  let datos = await data.json();
-  // 
-  let economia = await fetch( 'https://newsapi.org/v2/top-headlines?pageSize=5&country=ar&category=business&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
-  let datosEconomicos = await economia.json();
-  // 
-  let deporte = await fetch( 'https://newsapi.org/v2/top-headlines?pageSize=5&country=ar&category=sports&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
-  let datosDeporte = await deporte.json();
+  let datos =  await ObtenerDatos( 'business','us' ) 
+  let datosDeporte = await ObtenerDatos( 'sports','us'  ) 
+  let datosTecnologia =  await ObtenerDatos( 'technology','us'  ) 
+  let datosSalud =  await ObtenerDatos( 'health','us'  ) 
+  let datosGeneral =  await ObtenerDatos( 'general','us'  ) 
+  
+  // // -->Economia
+  // let data = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=40&category=business&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
+  // let datos = await data.json();
+  // // -->DEPORTE
+  // let deporte = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=40&category=sports&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
+  // let datosDeporte = await deporte.json();
+  // // -->SALUD
+  // let salud = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=40&category=health&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
+  // let datosSalud = await salud.json();
+  // // -->TECNOLOGIA
+  // let tecnologia = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=40&category=technology&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
+  // let datosTecnologia = await tecnologia.json();
+  // // -->GENERAL
+  // let general = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=13&category=general&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
+  // let datosGeneral = await general.json();
   return {
     props: {
       datos,
-      datosEconomicos,
-      datosDeporte
-    }, // will be passed to the page component as props
+      datosDeporte,
+      datosSalud,
+      datosTecnologia,
+      datosGeneral
+    },
   }
+
 }

@@ -5,70 +5,45 @@ import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Menu from '@mui/material/Menu';
-import MenuIcon from '@mui/icons-material/Menu';
 import Container from '@mui/material/Container';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import AdbIcon from '@mui/icons-material/Adb';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
-const pages = ['Products', 'Pricing', 'Blog'];
-const settings = ['Profile', 'Account', 'Dashboard', 'Logout'];
+import Link from 'next/link';
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import { useRouter } from 'next/router';
+
+// --> paginas del menu
+const settings = ['Perfil', 'Cerrar Sección'];
 
 function NavBar() {
-  const [anchorElNav, setAnchorElNav] = React.useState(null);
-  const [anchorElUser, setAnchorElUser] = React.useState(null);
+  const router = useRouter();
+  const [anchorElNav, setAnchorElNav] = React.useState( null );
+  const [anchorElUser, setAnchorElUser] = React.useState( null );
 
-  const handleOpenNavMenu = (event) => {
-    setAnchorElNav(event.currentTarget);
-  };
-  const handleOpenUserMenu = (event) => {
-    setAnchorElUser(event.currentTarget);
+
+  const handleOpenUserMenu = ( event ) => {
+    setAnchorElUser( event.currentTarget );
   };
 
   const handleCloseNavMenu = () => {
-    setAnchorElNav(null);
+    setAnchorElNav( null );
   };
 
   const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
+    setAnchorElUser( null );
   };
 
+
   return (
-    <AppBar position="static" style={{background:'#8b0a04'}}>
+    <AppBar position="static" style={{ background: '#000' }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <AdbIcon sx={{ display: { xs: 'none', md: 'flex' }, mr: 1 }} />
-          <Typography
-            variant="h6"
-            noWrap
-            component="a"
-            href="/"
-            sx={{
-              mr: 2,
-              display: { xs: 'none', md: 'flex' },
-              fontFamily: 'monospace',
-              fontWeight: 700,
-              letterSpacing: '.3rem',
-              color: 'inherit',
-              textDecoration: 'none',
-            }}
-          >
-            LOGO
-          </Typography>
 
           <Box sx={{ flexGrow: 1, display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
+           
             <Menu
               id="menu-appbar"
               anchorEl={anchorElNav}
@@ -81,18 +56,15 @@ function NavBar() {
                 vertical: 'top',
                 horizontal: 'left',
               }}
-              open={Boolean(anchorElNav)}
+              open={Boolean( anchorElNav )}
               onClose={handleCloseNavMenu}
               sx={{
                 display: { xs: 'block', md: 'none' },
               }}
             >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
+             
             </Menu>
+             {router.pathname != '/' && <Link href="./" ><Button sx={{color:'white'}}><ArrowBackIosIcon />Volver</Button></Link>}
           </Box>
           <NewspaperIcon sx={{ display: { xs: 'flex', md: 'none' }, mr: 1 }} />
           <Typography
@@ -104,7 +76,7 @@ function NavBar() {
               mr: 2,
               display: { xs: 'flex', md: 'none' },
               flexGrow: 1,
-              fontFamily: 'monospace',
+              fontFamily: 'Poppins',
               fontWeight: 700,
               letterSpacing: '.3rem',
               color: 'inherit',
@@ -114,15 +86,32 @@ function NavBar() {
             News
           </Typography>
           <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={handleCloseNavMenu}
-                sx={{ my: 2, color: 'white', display: 'block' }}
-              >
-                {page}
-              </Button>
-            ))}
+                {router.pathname != '/' &&<Link href="./" ><Button sx={{color:'white'}}><ArrowBackIosIcon />Volver</Button></Link>}
+          </Box>
+
+          <Box sx={{ flexGrow: 1, display: { xs: 'none', md: 'flex' }, position: 'relative' }}>
+            <Box sx={{
+              background: ' rgba(255, 0, 0, 0.582)', width: '30px',
+              height: '10px', position: 'absolute',
+              top: '40%'
+            }}></Box>
+            <Typography
+              variant="h6"
+              noWrap
+              component="a"
+              href="/"
+              sx={{
+                mr: 2,
+                display: { xs: 'none', md: 'flex' },
+                fontFamily: 'Poppins',
+                fontWeight: 700,
+                letterSpacing: '.3rem',
+                color: 'inherit',
+                textDecoration: 'none',
+              }}
+            >
+              News
+            </Typography>
           </Box>
 
           <Box sx={{ flexGrow: 0 }}>
@@ -144,16 +133,21 @@ function NavBar() {
                 vertical: 'top',
                 horizontal: 'right',
               }}
-              open={Boolean(anchorElUser)}
+              open={Boolean( anchorElUser )}
               onClose={handleCloseUserMenu}
             >
-              {settings.map((setting) => (
-                <MenuItem key={setting} onClick={handleCloseUserMenu}>
-                  <Typography textAlign="center">{setting}</Typography>
-                </MenuItem>
-              ))}
+              {settings.map( ( setting,i ) => (
+                <Link href={setting} key={settings}>
+                  <MenuItem key={i} onClick={handleCloseUserMenu}>
+
+                    <Typography textAlign="center">{setting}</Typography>
+                  </MenuItem></Link>
+              ) )}
             </Menu>
           </Box>
+
+
+
         </Toolbar>
       </Container>
     </AppBar>
