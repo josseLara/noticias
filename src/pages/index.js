@@ -191,21 +191,7 @@ export async function getServerSideProps( context ) {
   let datosSalud =  await ObtenerDatos( 'health','us'  ) 
   let datosGeneral =  await ObtenerDatos( 'general','us'  ) 
   
-  // // -->Economia
-  // let data = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=40&category=business&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
-  // let datos = await data.json();
-  // // -->DEPORTE
-  // let deporte = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=40&category=sports&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
-  // let datosDeporte = await deporte.json();
-  // // -->SALUD
-  // let salud = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=40&category=health&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
-  // let datosSalud = await salud.json();
-  // // -->TECNOLOGIA
-  // let tecnologia = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=40&category=technology&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
-  // let datosTecnologia = await tecnologia.json();
-  // // -->GENERAL
-  // let general = await fetch( 'https://newsapi.org/v2/top-headlines?country=ar&pageSize=13&category=general&apiKey=ce68154e45014bfdb3dc80fa072509c4' );
-  // let datosGeneral = await general.json();
+ 
   return {
     props: {
       datos,
