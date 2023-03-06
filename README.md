@@ -14,7 +14,7 @@
   ![image](https://user-images.githubusercontent.com/99273526/223012582-65f8349e-705a-4181-8195-5ebe46e26a1e.png)
     
     
-    <h3>Pagina Perfil</h3>
+ Pagina Perfil
     
 ![image](https://user-images.githubusercontent.com/99273526/223012759-15b0bdd8-7728-4f17-bae6-7b14c28b679e.png)
 
