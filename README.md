@@ -2,12 +2,12 @@
 
 <h3 >Debes insertar el API KEY obtenida en newsapi.org<h3>
 
-let data =  { type: type,country : country,API_KEY:"insertar la apiKey aqui" };
+--> let data =  { type: type,country : country,API_KEY:"insertar la apiKey aqui" };
   
   
 <h3 > Puedes Cambiar el tipo y el pais que muestren noticias en un país específico <h3>
   
-  <p > let datosGeneral =  await ObtenerDatos( 'general','us'  ) </p>
+  <p > --> let datosGeneral =  await ObtenerDatos( 'general','us'  ) </p>
   
   <h3 >Pagina Principal<h3>
     
