@@ -1,0 +1,59 @@
+.navbar{
+     width: 100%;
+     display: flex;
+     flex-direction: column;
+     gap: 10px;
+     padding: 0px 6px;
+}
+/* ? ---------- logo ------------ */
+.navbar__logo{
+     display: flex;
+     justify-content: space-between;
+     align-items: center;
+     gap: 10px;
+     font-family: 'Lato', sans-serif;
+}
+/* ? ---------- Profile ------------ */
+.navbar__profile {
+     display: flex;
+     gap: 9px;
+     align-items: center;
+     font-family: 'Lato', sans-serif;
+
+}
+.navbar__profile img{
+     width: 35px;
+     height: 35px;
+     border-radius: 100%;
+     object-fit: cover;
+}
+.navbar__profile_name{
+     display: flex;
+     flex-direction: column;
+}
+.navbar__profile_name p{
+     font-size: 1rem;
+     font-weight: 700;
+}
+.navbar__profile_name span{
+     font-size: .8rem;
+     opacity: .6;
+}
+/* ? ---------- links ------------ */
+.navbar__links{
+     display: flex;
+     flex-direction: column;
+     list-style: none;
+}
+.navbar__links li{
+     display: flex;
+     align-items: center;
+     gap: 6px;
+     font-family: 'Lato', sans-serif;
+     padding: 10px;
+
+}
+.navbar__links li svg{
+     color: gray;
+     font-size: 1.4rem;
+}

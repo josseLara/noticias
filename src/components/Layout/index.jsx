@@ -1,13 +1,14 @@
-import NavBar from "../Menu";
+import NavBar from "../NavBar";
 import Footer from "../Footer";
+import styles from "./layout.module.css";
 
 function Layout( { children } ) {
      return (
         
-               <div>
-                    <NavBar />
+               <div className={styles.content}>
+                    <NavBar  />
                     {children}
-                    <Footer/>
+                    {/* <Footer/> */}
                </div>
      );
 }
