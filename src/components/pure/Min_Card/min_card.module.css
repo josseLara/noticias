@@ -1,0 +1,52 @@
+.min_card{
+    display: flex;
+    gap: 9px;
+    color: #b2b9c6;
+    font-family: 'Lato', sans-serif;
+}
+
+/* img */
+.min_card img{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* description */
+.min_card__description{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.min_card__description__user{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+.min_card__description__user img{
+    width: 25px;
+    height: 25px;
+    object-fit: cover;
+    border-radius: 100%;
+}
+.min_card__description__user p{
+    color: #fff;
+    font-size: .8rem;
+    font-weight: 500;
+}
+.min_card__description__user p span{
+    color: #b2b9c6;
+}
+
+.min_card h4{
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: #fff;
+    margin: 4px 0px;
+}
+.min_card__date{
+    font-size: .7rem;
+    color: #b2b9c6;
+}

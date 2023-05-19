@@ -1,0 +1,23 @@
+.card_popular{
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    font-family: 'Lato', sans-serif;
+    color: #b2b9c6;
+}
+.card_popular span{
+    color: #69acd5;
+}
+.card_popular img{
+    width: 35px;
+    height: 35px;
+    border-radius: 5px;
+    object-fit: cover;
+}
+.card_popular__description{
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+    
+}   
+

@@ -1,36 +1,49 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  datos:null,
-  datosDeportes:null,
-  datosSalud:null,
-  datosTecnologia:null,
-  datosGeneral:null
+  type: 'datosGeneral',
+  language: 'us',
+  newsContry: 'us',
+  dataSports: null,
+  dataBusiness: null,
+  dataTechnology: null,
+  datosGeneral: null
 }
 
 export const datosSlice = createSlice({
   name: 'datos',
   initialState,
   reducers: {
-     setDatos: (state,action) => {
-      return {...state,datos: action.payload}
-    }, 
-    setDatosDeportes: (state,action) => {
-      return {...state,datosDeportes: action.payload}
+    setType: (state, action) => {
+      return { ...state, type: action.payload }
     },
-    setDatosSalud:(state,action)=>{
-      return {...state,datosSalud:action.payload}
+    setDataSports: (state, action) => {
+      return { ...state, dataSports: action.payload }
     },
-    setDatosTecnologia: (state,action) => {
-      return {...state,datosTecnologia: action.payload}
+    setDataBusiness: (state, action) => {
+      return { ...state, dataBusiness: action.payload }
     },
-    setDatosGeneral:(state,action) =>{
-      return {...state,datosGeneral: action.payload}
-    }
+    setDataTechnology: (state, action) => {
+      return { ...state, dataTechnology: action.payload }
+    },
+    setDatosGeneral: (state, action) => {
+      return { ...state, datosGeneral: action.payload }
+    },
+    setDataNewsContry : (state, action) => {
+      return { ...state, newsContry: action.payload }
+    },
+     setDatosLanguage: (state, action) => {
+    return { ...state, language: action.payload }
   },
+  // 
+  setAddFavoriteProp: (state, action) => {
+    return { ...state, ...action.payload }
+  },
+  
+},
 })
 
 
-export const { setDatos,setDatosDeportes,setDatosSalud,setDatosTecnologia,setDatosGeneral } = datosSlice.actions
+export const { setType, setDataSports, setDataBusiness, setDataTechnology, setDatosGeneral, setDatosLanguage,setDataNewsContry,setAddFavoriteProp  } = datosSlice.actions
 
 export default datosSlice.reducer;

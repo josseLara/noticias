@@ -1,15 +1,19 @@
-import NavBar from "../NavBar";
-import Footer from "../Footer";
+import NavBar from "../container/NavBar";
+import Footer from "../pure/Footer";
 import styles from "./layout.module.css";
+import Menu_Header from "../container/Menu_Header";
 
-function Layout( { children } ) {
+function Layout({ children }) {
      return (
-        
-               <div className={styles.content}>
-                    <NavBar  />
+
+          <div className={styles.content}>
+               <NavBar />
+               <div className={styles.content__space}>
+                    <Menu_Header />
                     {children}
-                    {/* <Footer/> */}
                </div>
+               {/* <Footer/> */}
+          </div>
      );
 }
 

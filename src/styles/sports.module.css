@@ -1,64 +1,56 @@
 .main {
   width: 100%;
-  height: 100%;
   display: flex;
-  gap: 40px;
+  gap: 20px;
+
 }
 
 /* left */
-.main__left{
+.main__left {
   height: 100vh;
   display: flex;
   flex-direction: column;
   gap: 10px;
   overflow-y: scroll;
   padding-bottom: 100px;
-
+  padding-right: 40px;
 }
-.main__left__cards{
+
+.main__left__cards {
   display: flex;
   gap: 25px;
   flex-wrap: wrap;
 }
+
 /* right */
 .main__right {
-  width: 450px; 
-  height: 300px;
   display: flex;
   flex-direction: column;
-  height: 100%;
-  gap: 6px;
-  padding: 0px 30px;
- 
-}
-.main__right__title h1{
-  font-size: 1.3rem;
-  font-family: 'Lato', sans-serif;
-  margin-bottom: 10px;
-}
-.main__right__cards {
-  height: 344px;
-  display: flex;
-  gap: 16px;
-  flex-direction: column;
-  overflow: hidden;
-  overflow-y: auto;
-}
-.main__right__title{
-  display: flex;
   align-items: center;
-  justify-content: space-between;
+
 }
-.main__right__title:nth-child(3){
-  margin-top: 20px;
+
+.main__right h1 {
+  font-size: 1.3rem;
+  margin: 10px 0px;
+  margin-top: 25px;
+  font-size: 1rem;
+  font-family: 'Lato', sans-serif;
+  align-self: flex-start;
 }
-.main__right__tags{
-  width: 360px;
+
+.main__right__results {
+  width: 440px;
+  margin-top: 8px;
   display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  padding-left: 10px;
+  flex-direction: column;
+  gap: 20px;
+  border: 1px solid #222222;
+  border-radius: 10px;
+  padding: 7px;
 }
+
+
 
 
 

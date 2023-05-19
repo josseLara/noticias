@@ -1,0 +1,35 @@
+.select{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    position: relative;
+    margin-top: 30px;
+}
+
+.select__country{
+    display: flex;
+    align-items: center;
+    gap: 7px;
+}
+.select__country img{
+    width: 30px;
+    height: 30px;
+    object-fit: cover;
+}
+
+.select__list_contry{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: absolute;
+    right: 0;
+    top: 40px;
+    background-color: #2b2b2b;
+    padding: 10px 15px;
+    z-index: 100;
+}
+
+.select__list_contry .select__country:hover{
+    color: #69acd5;
+    cursor: pointer;
+}

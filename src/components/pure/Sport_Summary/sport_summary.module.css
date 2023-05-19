@@ -1,0 +1,91 @@
+.sport_summary{
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    background-color: #1d67d7;
+    border-radius: 7px;
+    padding: 14px 0px;
+}
+/* title */
+.sport_summary__title{
+    padding-left: 10px;
+    width: 100%;
+    align-self: self-start;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+   
+}
+
+.sport_summary__title h2{
+   margin-left: 40px;
+    font-size: 1rem;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+}
+.sport_summary__title button{
+    padding: 2px 3px;
+    font-size: .8rem;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    border: none;
+    background-color: #fff;
+    border-radius: 6px;
+    color: black;
+}
+.sport_summary__title button svg{
+    color: #d64229;
+
+}
+
+/*  */
+.sport_summary__center{
+    font-size: .6rem;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+    justify-content: center;
+}
+
+/* clubs */
+.sport_summary__clubs{
+    display: flex;
+    align-items: center;
+}
+.clubs__club{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 5px;
+}
+.clubs__club img{
+    width: 60px;
+    height: 60px;
+    object-fit: contain;
+}
+.clubs__club span{
+    font-size: 1.1rem;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+}
+
+/* description */
+.clubs__description{
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    align-items: center;
+}
+.clubs__description p{
+    font-size: 1.6rem;
+    font-weight: 700;
+    font-family: 'Lato', sans-serif;
+    color: #fff;
+}
+.clubs__description__time{
+    font-size: .6rem;
+    font-family: 'Lato', sans-serif;
+    color: #b2b9c6;
+}

@@ -1,0 +1,39 @@
+
+/* avatar */
+.form__avatar{
+    display: flex;
+    align-items: center;
+    font-family: 'Lato', sans-serif;
+    gap: 30px;
+}
+
+.form__avatar img{
+    width: 70px;
+    height: 70px;
+    border-radius: 100%;
+    object-fit: cover;
+}
+
+.form__avatar__description{
+    display: flex;
+    gap: 10px;
+    flex-direction: column;
+}
+.form__avatar__description h2{
+    font-size: 1.2rem;
+}
+.form__avatar__description span{
+    font-size: .8rem;
+    color: #b2b9c6;
+
+}
+
+.form__avatar button{
+    padding: 6px 10px;
+    border: none;
+    outline: none;
+    background-color: #d64229;
+    font-family: 'Lato', sans-serif;
+    border-radius: 3px;
+    
+}
