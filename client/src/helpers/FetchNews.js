@@ -1,5 +1,5 @@
 export async function ObtenerDatos(type, country, numberPagination) {
-  let data = { type: type, country: country, numberPagination: numberPagination, API_KEY: "ce68154e45014bfdb3dc80fa072509c4" };
+  let data = { type: type, country: country, numberPagination: numberPagination, API_KEY: process.env.API_KEY };
   const url = 'http://localhost:3000/api/datos';
   const options = {
     method: 'POST',

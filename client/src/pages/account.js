@@ -14,14 +14,14 @@ function Account() {
                 <div className={styles.main__left}>
                     <ul>
                         <li className={styles.main__left__active}><AiOutlineUser />Profile</li>
-                        <li><RiLockPasswordLine />Password</li>
+                        {/* <li><RiLockPasswordLine />Password</li> */}
                         <li><IoSettingsOutline />Setting</li>
                     </ul>
                 </div>
                 <div className={styles.main__right}>
-                   {/* <Avatar/> */}
-                   {/* <Account_Detail/> */}
-                   <Account_Setting/>
+                   <Avatar/>
+                   <Account_Detail/>
+                   {/* <Account_Setting/> */}
                 </div>
             </main>
         </Layout>
