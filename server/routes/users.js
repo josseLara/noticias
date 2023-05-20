@@ -65,7 +65,11 @@ routerUser.post('/register', createToken, async (req, res) => {
 });
 
 
-// Log in
+
+/**
+ * POST /login
+ * Create a new user.
+ */
 routerUser.post('/login', createToken, async (req, res) => {
     try {
         // Find the user with the requested email in the database
@@ -115,7 +119,10 @@ routerUser.post('/login', createToken, async (req, res) => {
 });
 
 
-// log out
+/**
+ * POST /logout
+ * Create a new user.
+ */
 routerUser.get('/logout', authMiddleware, async (req, res) => {
     try {
      // retrieved from auth middleware and found
