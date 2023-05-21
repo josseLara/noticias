@@ -7,14 +7,14 @@ const authMiddleware = async (req, res, next) => {
     const token = req.cookies.x_auth;
 
     if (!token) {
-      return res.status(401).json({ error: 'No authentication token provided' });
+      return res.json({ isAuth: false,  error: 'No authentication token provided' });
     }
 
     const decoded = jwt.verify(token, process.env.SECRET_KEY);
     req.user = decoded;
     next();
   } catch (err) {
-    return res.status(401).json({ error: 'Invalid authentication token' });
+    return res.json({ isAuth: false, error: 'Invalid authentication token' });
   }
 };
 

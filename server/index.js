@@ -3,6 +3,7 @@ import cookieParser from 'cookie-parser';
 import dotenv from 'dotenv';
 import routerComment from './routes/comment.js';
 import routerUser from './routes/users.js';
+import cors from 'cors';
 
 // backend server
 const app = express();
@@ -10,6 +11,7 @@ const app = express();
 dotenv.config()
 
 app.use(express.json());
+app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(cookieParser());
 

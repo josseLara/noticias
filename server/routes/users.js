@@ -86,7 +86,7 @@ routerUser.post('/login', createToken, async (req, res) => {
 
         // If there is no user with the requested email, return an error
         if (!user || user.length === 0) {
-            return res.status(404).json({
+            return res.json({
                 success: false,
                 message: 'There are no users with the provided email.',
             });
@@ -96,7 +96,7 @@ routerUser.post('/login', createToken, async (req, res) => {
         const isMatch = await bcrypt.compare(req.body.password, user[0].password);
       
         if (!isMatch) {
-            return res.status(401).json({
+            return res.json({
                 success: false,
                 message: 'Password is incorrect.',
             });
