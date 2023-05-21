@@ -8,7 +8,7 @@ let routerComment = Router();
 routerComment.post('/getComments', async (req, res) => {
     try {
         // Create the SQL query to get all comments
-        const querySql = "SELECT * FROM comments";
+        const querySql = `SELECT * FROM comments WHERE news_id='${req.body.id}'`;
 
         // Execute the query and wait for it to resolve
         const dataComments = await new Promise((resolve, reject) => {
@@ -22,7 +22,7 @@ routerComment.post('/getComments', async (req, res) => {
         });
 
         // Send the comments as a response
-        res.json(dataComments);
+        res.json({...dataComments,success:true});
     } catch (err) {
         // If an error occurs, send an error response
         res.status(400).json({ success: false, message: err.message });
@@ -57,6 +57,8 @@ routerComment.post('/saveComment', async (req, res) => {
       res.status(400).json({ success: false, message: err.message });
     }
   })
+
+
 
 
 

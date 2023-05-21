@@ -6,10 +6,23 @@ import bcrypt from 'bcrypt';
 
 let routerUser = Router();
 
-routerUser.post('/auth', authMiddleware, (req, res) => {
+routerUser.post('/auth', authMiddleware, async (req, res) => {
     try {
         // Pass data to client if passed through auth middleware
-        res.status(200).json({...req.user,isAuth:true})
+        const querySql = `SELECT * FROM users WHERE email='${req.user.email}'`;
+        const user = await new Promise((resolve, reject) => {
+            connectionDB.query(querySql, (error, results, fields) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+
+        delete user[0].password;
+
+        res.status(200).json({...user[0],isAuth:true})
 
     } catch (err) {
         next(err);

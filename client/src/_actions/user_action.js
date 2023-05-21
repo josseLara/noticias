@@ -34,7 +34,7 @@ export function auth() {
   axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
   
   const request = axios.post('http://localhost:8080/api/user/auth', null).then((response) => response.data);
-    
+   
   return {
     type: AUTH_USER,
     payload: request,
