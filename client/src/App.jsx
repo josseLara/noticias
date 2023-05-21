@@ -2,6 +2,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Auth from './hoc/auth';
 import LoginPage from './components/pages/LoginPage';
 import LandingPage from './components/pages/LandingPage';
+import RegisterPage from './components/pages/RegisterPage/RegisterPage';
 
 function App() {
 /**
@@ -11,7 +12,7 @@ function App() {
     */
   const AuthenticLandingPage = Auth(LandingPage, true);
   const AuthenticLoginPage = Auth(LoginPage, false);
-
+  const AuthenticRegisterPage = Auth(RegisterPage, false);
 
   return (
     <Router>
@@ -19,7 +20,7 @@ function App() {
         <Routes>
           <Route path="/" element={<AuthenticLandingPage />} />
           <Route path="/login" element={<AuthenticLoginPage />} />
-         
+          <Route path="/register" element={<AuthenticRegisterPage />} />
         </Routes>
       {/* </Layout> */}
     </Router>
