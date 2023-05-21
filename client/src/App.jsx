@@ -9,7 +9,7 @@ function App() {
     * true: A page that only logged in users can access
     * false: A page that cannot be accessed by logged in users
     */
-  const AuthenticLandingPage = Auth(LandingPage, null);
+  const AuthenticLandingPage = Auth(LandingPage, true);
   const AuthenticLoginPage = Auth(LoginPage, false);
 
 

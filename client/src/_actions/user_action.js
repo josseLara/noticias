@@ -5,9 +5,10 @@ export function loginUser(dataToSubmit) {
   const request = axios
     .post('http://localhost:8080/api/user/login', dataToSubmit)
     .then(response => {
-      const token = response.headers['x-auth-token'];
-      document.cookie = `x_token=${token}; path=/;`;
-      return response.data
+      const token = response.data.token;
+      localStorage.setItem('x_token', token);
+
+      return response.data;
     })
 
   return {
@@ -29,10 +30,11 @@ export function registerUser(dataToSubmit) {
 
 export function auth() {
 
-  const request = axios.post('http://localhost:8080/api/user/auth', null, {
-    // withCredentials: true,
-  }).then((response) => response.data);
-
+  const token = localStorage.getItem('x_token');
+  axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+  
+  const request = axios.post('http://localhost:8080/api/user/auth', null).then((response) => response.data);
+    
   return {
     type: AUTH_USER,
     payload: request,

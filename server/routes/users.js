@@ -9,7 +9,7 @@ let routerUser = Router();
 routerUser.post('/auth', authMiddleware, (req, res) => {
     try {
         // Pass data to client if passed through auth middleware
-        res.status(200).json(req.user)
+        res.status(200).json({...req.user,isAuth:true})
 
     } catch (err) {
         next(err);
@@ -94,7 +94,7 @@ routerUser.post('/login', createToken, async (req, res) => {
 
         // If there is a user with the requested email, check if the password matches
         const isMatch = await bcrypt.compare(req.body.password, user[0].password);
-      
+
         if (!isMatch) {
             return res.json({
                 success: false,
@@ -108,6 +108,7 @@ routerUser.post('/login', createToken, async (req, res) => {
             .json({
                 success: true,
                 message: 'User logged in successfully!',
+                token: req.token
             });
     } catch (error) {
         console.error(error);
@@ -125,17 +126,17 @@ routerUser.post('/login', createToken, async (req, res) => {
  */
 routerUser.get('/logout', authMiddleware, async (req, res) => {
     try {
-     // retrieved from auth middleware and found
-      const user = req.user;
-  
-      if (!user) {
-        return res.json({ success: false, message: 'Failed to logout' });
-      }
-  
-      return res.status(200).send({ success: true });
+        // retrieved from auth middleware and found
+        const user = req.user;
+
+        if (!user) {
+            return res.json({ success: false, message: 'Failed to logout' });
+        }
+
+        return res.status(200).send({ success: true });
     } catch (err) {
-      next(err);
+        next(err);
     }
-  });
+});
 
 export default routerUser;

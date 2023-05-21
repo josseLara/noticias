@@ -3,9 +3,12 @@ import jwt from 'jsonwebtoken';
 
 // Authentication processing middleware
 const authMiddleware = async (req, res, next) => {
-  try {
-    const token = req.cookies.x_auth;
 
+  try {
+    
+    const authHeader = req.headers.authorization;
+    const token = authHeader && authHeader.split(' ')[1];
+ 
     if (!token) {
       return res.json({ isAuth: false,  error: 'No authentication token provided' });
     }
