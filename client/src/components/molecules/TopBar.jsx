@@ -36,6 +36,12 @@ const TobBar = styled.header`
         height: 40px;
         object-fit: cover;
     }
+
+    @media (max-width:700px) {
+      display: grid;
+      grid-column-end: span;
+      grid-template-columns: repeat(3,1fr);
+    }
 `;
 
 const IconsBar = styled.div`

@@ -28,6 +28,7 @@ position: relative;
 background-image: url(https://cdn.dribbble.com/userupload/5279196/file/original-e7ac5ca215cbd2df38d4165020026124.png?compress=1&resize=1504x1665&vertical=center);
 padding:10px;
 padding-right: 20px;
+margin-right: 5%;
 
 div::before {
     content: "";

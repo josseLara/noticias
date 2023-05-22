@@ -39,7 +39,7 @@ function LandingPage() {
     return (
         <>
             <h1>lading page</h1>
-            <button onClick={handleSaveComment}>click</button>
+            <button onClick={handleSaveComment}>click</button>  
            
         </>
     );

@@ -4,6 +4,7 @@ import { BiNews } from 'react-icons/bi';
 import { MdOutlineAccountCircle, MdOutlineSportsBasketball } from 'react-icons/md';
 import {  AiOutlineInbox } from 'react-icons/ai'
 import {IoExit} from 'react-icons/io5';
+import BtnToggle from "../atoms/BtnToggle";
 
 let linksList =[
     {txt:'News',icon:<BiNews/>},
@@ -17,6 +18,8 @@ let linksList1 =[
 function SideBar() {
     return (
         <SideBarContent>
+            
+            <BtnToggle />
 
             {/* molecule */}
             <SideBarUser>
@@ -40,11 +43,16 @@ function SideBar() {
 
 
 let SideBarContent = styled.aside`
-    width: 250px;
+    width: 360px;
     height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+    justify-content: space-between;
+    
+    @media (max-width:700px) {
+        position: absolute;
+          left: 100vw;
+    }
 `;
 
 let SideBarUser = styled.aside`
@@ -53,6 +61,7 @@ let SideBarUser = styled.aside`
     gap: 10px;
     padding-left: 10px;
     padding-top: 10px;
+    position: relative;
 
     img{
         width: 40px;
@@ -78,7 +87,6 @@ let SideBarUser = styled.aside`
         font-size: .8rem;
     }
 `;
-
 
 
 export default SideBar;
