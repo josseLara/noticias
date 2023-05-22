@@ -3,49 +3,34 @@ import MainNewsCard from "../organisms/MainNewsCard";
 import SideBar from "../organisms/SideBar";
 import TopBar from "../molecules/topbar";
 import { styled } from "styled-components";
+import Layout from "./Layout";
 
 
 function LandingPageStructure() {
     return (
-        <>
-            <TopBar />
 
-            <Main>
-                <SideBar />
+        <Layout>
 
-                <div className="content">
-                    <MainNewsCard />
-                    <SecondaryNewsCard />
+                <MainNewsCard />
+                <SecondaryNewsCard />
 
-                    <div className="cards">
-                        <SecondaryNewsCard />
-                        <SecondaryNewsCard />
-                        <SecondaryNewsCard />
-                    </div>
+            <Cards className="cards">
+                <SecondaryNewsCard />
+                <SecondaryNewsCard />
+                <SecondaryNewsCard />
+            </Cards>
+        </Layout>
 
-                </div>
-            </Main>
-        </>
     );
 }
 
 
 // 
-const Main = styled.main`
-    display: flex;
-    gap: 10px;
-    overflow-y: scroll;
+const Cards = styled.div`  
+                display: flex;
+                gap: 10px;
+                flex-wrap: wrap;
 
-    .content{
-        height: 80vh;
-        margin-top: 20px;
-    }
-    .content,.cards{
-        display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
-    }
+            `;
 
-
-`;
 export default LandingPageStructure;

@@ -43,7 +43,7 @@ function SideBar() {
 
 
 let SideBarContent = styled.aside`
-    width: 360px;
+    width: 200px;
     height: 100vh;
     display: flex;
     flex-direction: column;

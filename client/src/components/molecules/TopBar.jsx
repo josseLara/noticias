@@ -28,10 +28,10 @@ function TopBar() {
 
 const TobBar = styled.header`
     width: 100vw;
-    height: 130px;
+    height: 50px;
     display: flex;
     align-items: center;
-    justify-content: space-evenly;
+    justify-content: space-between;
 
     img{
         grid-row: 1/2;
@@ -43,6 +43,7 @@ const TobBar = styled.header`
 
 
     @media (max-width:700px) {
+      height: 130px;
       display: grid;
       grid-column-end: span;
       grid-template-columns: repeat(2,1fr);
@@ -55,7 +56,7 @@ const IconsBar = styled.div`
     align-items: center;
     font-size: 1.5rem;
     gap: 6px;
-    
+    margin-left: 27%;
     svg:hover{
         cursor: pointer;
         color: #1E74F6;
@@ -64,6 +65,7 @@ const IconsBar = styled.div`
     @media (max-width:700px) {
         justify-self: center;
         grid-row: 2/3;
+        margin-left: 0px;
        
     }
 `;
