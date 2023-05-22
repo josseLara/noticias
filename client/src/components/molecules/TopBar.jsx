@@ -28,19 +28,25 @@ function TopBar() {
 
 const TobBar = styled.header`
     width: 100vw;
+    height: 130px;
     display: flex;
     align-items: center;
     justify-content: space-evenly;
+
     img{
+        grid-row: 1/2;
         width: 50px;
         height: 40px;
         object-fit: cover;
+        margin-left: 20px;
     }
+
 
     @media (max-width:700px) {
       display: grid;
       grid-column-end: span;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(2,1fr);
+     
     }
 `;
 
@@ -49,10 +55,16 @@ const IconsBar = styled.div`
     align-items: center;
     font-size: 1.5rem;
     gap: 6px;
-
+    
     svg:hover{
         cursor: pointer;
         color: #1E74F6;
+    }
+
+    @media (max-width:700px) {
+        justify-self: center;
+        grid-row: 2/3;
+       
     }
 `;
 

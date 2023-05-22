@@ -15,6 +15,7 @@ function TobBarLinks({links}) {
 
 
 const Links = styled.ul`
+    grid-row: 2/3;
     list-style: none;
     display: flex;
     align-items: center;

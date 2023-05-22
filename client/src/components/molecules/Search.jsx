@@ -11,6 +11,9 @@ function Search() {
 }
 
 const SearchContent = styled.div`
+    grid-row: 1/2;
+    width: 90%;
+    max-width: 260px;
     display: flex;
     align-items: center;
     border: 1px solid #ffffff7c;

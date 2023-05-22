@@ -46,6 +46,10 @@ div::before {
 
   }
   
+  @media (max-width:700px) {
+        width: 100%;
+        margin: 0;
+    }
 
 `;
 

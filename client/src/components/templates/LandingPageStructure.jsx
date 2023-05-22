@@ -34,7 +34,10 @@ function LandingPageStructure() {
 const Main = styled.main`
     display: flex;
     gap: 10px;
+    overflow-y: scroll;
+
     .content{
+        height: 80vh;
         margin-top: 20px;
     }
     .content,.cards{
