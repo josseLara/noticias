@@ -1,6 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { getComment, saveComment } from "../../../_actions/comment_action";
 
+
 function LandingPage() {
     // borrar
     let dispatch = useDispatch();
@@ -25,7 +26,7 @@ function LandingPage() {
         // console.log(user.userData.email)
         
         // ? obtener los comment por id
-        // dispatch(getComment({id:"1"})).then((response) => {
+        // dispatch(getComment({id: 1})).then((response) => {
         //     if (response.payload.success) {
         //         console.log(response.payload)
         //     } else {
@@ -39,6 +40,7 @@ function LandingPage() {
         <>
             <h1>lading page</h1>
             <button onClick={handleSaveComment}>click</button>
+           
         </>
     );
 }

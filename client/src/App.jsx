@@ -3,6 +3,7 @@ import Auth from './hoc/auth';
 import LoginPage from './components/pages/LoginPage';
 import LandingPage from './components/pages/LandingPage';
 import RegisterPage from './components/pages/RegisterPage/RegisterPage';
+import LandingPageStructure from './components/templates/LandingPageStructure';
 
 function App() {
 /**
@@ -21,6 +22,8 @@ function App() {
           <Route path="/" element={<AuthenticLandingPage />} />
           <Route path="/login" element={<AuthenticLoginPage />} />
           <Route path="/register" element={<AuthenticRegisterPage />} />
+          {/* prueba */}
+          <Route path="/p" element={<LandingPageStructure />} />
         </Routes>
       {/* </Layout> */}
     </Router>
