@@ -11,10 +11,8 @@ function Layout({children}) {
             <TopBar />
 
             <Main>
-                <SideBar />
-                <div className="content">
+                <SideBar />     
                     {children}
-                </div>
             </Main>
         </>
     );
@@ -27,17 +25,6 @@ const Main = styled.main`
     display: flex;
     gap: 10px;
  
-    .content{
-        width: 100%;
-        height: 89vh;
-       display: flex;
-       flex-wrap: wrap;
-       gap: 20px;
-       overflow-y:scroll;
-       margin-top: 20px;
-        @media (max-width:700px) {
-          height: 79vh;
-        }
-    }
+ 
 `;
 export default Layout;

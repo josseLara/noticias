@@ -8,7 +8,6 @@ import BtnToggle from "../atoms/BtnToggle";
 
 let linksList =[
     {txt:'News',icon:<BiNews/>},
-    {txt:'Sports',icon:<MdOutlineSportsBasketball/>},
     {txt:'Store',icon:<AiOutlineInbox/>},
 ]
 let linksList1 =[

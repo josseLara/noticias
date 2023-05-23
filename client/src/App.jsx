@@ -3,7 +3,9 @@ import Auth from './hoc/auth';
 import LoginPage from './components/pages/LoginPage';
 import LandingPage from './components/pages/LandingPage';
 import RegisterPage from './components/pages/RegisterPage/RegisterPage';
-import LandingPageStructure from './components/templates/LandingPageStructure';
+// --> Template
+import LandingPageTemplate from './components/templates/LandingPageTemplate';
+import StoragePageTemplate from './components/templates/StoragePageTemplate';
 
 function App() {
 /**
@@ -23,7 +25,7 @@ function App() {
           <Route path="/login" element={<AuthenticLoginPage />} />
           <Route path="/register" element={<AuthenticRegisterPage />} />
           {/* prueba */}
-          <Route path="/p" element={<LandingPageStructure />} />
+          <Route path="/p" element={<StoragePageTemplate />} />
         </Routes>
       {/* </Layout> */}
     </Router>
