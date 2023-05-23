@@ -1,16 +1,12 @@
 import { styled } from "styled-components";
-import CardLogin from "../organisms/CardLogin";
+import AuthCard from "../organisms/AuthCard";
 
-let InputFileParam = [
-    { label: "Email", InputValue: "", InputType: "email" },
-    { label: "Password", InputValue: "", InputType: "password" },
 
-]
 
-function LoginTemplate() {
+function LoginTemplate({ inputFileParam, btnText, title, link,onSubmitForm}) {
     return (
         <Content>
-            <CardLogin InputFileParam={InputFileParam} BtnText="Sig In" title="Login" link="I forgot the password"/>
+            <AuthCard inputFileParam={inputFileParam} btnText={btnText} title={title} link={link} onSubmitForm={onSubmitForm} />
         </Content>
     );
 }

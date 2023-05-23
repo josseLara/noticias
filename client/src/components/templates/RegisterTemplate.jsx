@@ -1,18 +1,18 @@
 import { styled } from "styled-components";
-import CardLogin from "../organisms/CardLogin";
+import AuthCard from "../organisms/AuthCard";
 
-let InputFileParam = [
-    { label: "Name", InputValue: "", InputType: "text" },
-    { label: "LastName", InputValue: "", InputType: "text" },
-    { label: "Email", InputValue: "", InputType: "email" },
-    { label: "Password", InputValue: "", InputType: "password" },
+let inputFileParam = [
+    { label: "Name", inputValue: "", inputType: "text" },
+    { label: "LastName", inputValue: "", inputType: "text" },
+    { label: "Email", inputValue: "", inputType: "email" },
+    { label: "Password", inputValue: "", inputType: "password" },
 
 ]
 
-function RegisterTemplate() {
+function RegisterTemplate({ inputFileParam, btnText, title, link,onSubmitForm}) {
     return (
         <Content>
-            <CardLogin InputFileParam={InputFileParam} title="Register" BtnText="Send" link="I am registered"/>
+            <AuthCard inputFileParam={inputFileParam} btnText={btnText} title={title} link={link} onSubmitForm={onSubmitForm} />
         </Content>
     );
 }

@@ -1,10 +1,12 @@
 import { styled } from "styled-components";
 
-function InputField({label,InputValue="",InputType="text"}) {
+function InputField({label,inputValue="",inputType="text",onChange, placeHolder}) {
     return (
             <Input>
                 <label htmlFor="">{label}</label>
-                <input type={InputType} defaultValue={InputValue}/>
+                <input type={inputType} defaultValue={inputValue} 
+                required="required" onChange={onChange ?? null} 
+                placeholder={placeHolder ?? null}/>
             </Input>
     );
 }

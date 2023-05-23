@@ -2,11 +2,11 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Auth from './hoc/auth';
 import LoginPage from './components/pages/LoginPage';
 import LandingPage from './components/pages/LandingPage';
-import RegisterPage from './components/pages/RegisterPage/RegisterPage';
+import RegisterPage from './components/pages/RegisterPage';
 // --> Template
-import LandingPageTemplate from './components/templates/LandingPageTemplate';
-import StoragePageTemplate from './components/templates/StoragePageTemplate';
-import ProfilePageTemplate from './components/templates/ProfilePageTemplate';
+import LandingPageTemplate from './components/templates/LandingTemplate';
+import StoragePageTemplate from './components/templates/StorageTemplate';
+import ProfilePageTemplate from './components/templates/ProfileTemplate';
 import LoginTemplate from './components/templates/LoginTemplate';
 import RegisterTemplate from './components/templates/RegisterTemplate';
 

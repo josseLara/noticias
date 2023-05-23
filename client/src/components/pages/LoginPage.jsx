@@ -1,8 +1,10 @@
-import React, { useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { loginUser } from '../../../_actions/user_action';
+import { loginUser } from '../../_actions/user_action';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
+import LoginTemplate from '../templates/LoginTemplate';
+
 
 function LoginPage() {
   const navigate = useNavigate();
@@ -39,43 +41,53 @@ function LoginPage() {
     });
   };
 
+  const inputFileParam = useMemo(() => {
+    return [
+      { label: "Email", inputValue: "", inputType: "email", onChange: onEmailHandler, placeHolder: "youname@example.com" },
+      { label: "Password", inputValue: "", inputType: "password", onChange: onPasswordHandler, placeHolder: "password" },
+    ];
+  }, []);
   return (
-    <Container>
-      <LoginForm
-        style={{ display: 'flex', flexDirection: 'column' }}
-        onSubmit={onSubmitHandler}
-      >
-        <Title>Welcome back</Title>
-        <InputContainer>
-          <label htmlFor="">Email</label>
-          <input
-            type="email"
-            value={Email}
-            onChange={onEmailHandler}
-            placeholder="youname@example.com"
-            required="required"
-          />
-        </InputContainer>
+    // <Container>
+    //   <LoginForm
+    //     style={{ display: 'flex', flexDirection: 'column' }}
+    //     onSubmit={onSubmitHandler}
+    //   >
+    //     <Title>Welcome back</Title>
+    //     <InputContainer>
+    //       <label htmlFor="">Email</label>
+    //       <input
+    //         type="email"
+    //         value={Email}
+    //         onChange={onEmailHandler}
+    //         placeholder="youname@example.com"
+    //         required="required"
+    //       />
+    //     </InputContainer>
 
-        <InputContainer>
-          <label htmlFor="">Password</label>
-          <input
-            type="password"
-            value={Password}
-            onChange={onPasswordHandler}
-            placeholder="yourpassword"
-            required="required"
-          />
-        </InputContainer>
+    //     <InputContainer>
+    //       <label htmlFor="">Password</label>
+    //       <input
+    //         type="password"
+    //         value={Password}
+    //         onChange={onPasswordHandler}
+    //         placeholder="yourpassword"
+    //         required="required"
+    //       />
+    //     </InputContainer>
 
-        <SubmitButton type="submit">Sign In</SubmitButton>
+    //     <SubmitButton type="submit">Sign In</SubmitButton>
 
-        <SignUpLink>
-          <p>Don't have an account?</p>
-          <Link to="/register">sign up</Link>
-        </SignUpLink>
-      </LoginForm>
-    </Container>
+    //     <SignUpLink>
+    //       <p>Don't have an account?</p>
+    //       <Link to="/register">sign up</Link>
+    //     </SignUpLink>
+    //   </LoginForm>
+    // </Container>
+    <LoginTemplate 
+    inputFileParam={inputFileParam} btnText="Sig In" title="Login" 
+    link="I forgot the password" onSubmitForm={onSubmitHandler}
+    />
   );
 }
 

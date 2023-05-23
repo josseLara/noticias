@@ -1,13 +1,13 @@
 import { styled } from "styled-components";
-import FormLogin from "../molecules/FormLogin";
+import FormAuth from "../molecules/FormAuth";
 import Title from "../atoms/Title";
 
 
-function CardLogin({InputFileParam,BtnText,title,link}) {
+function AuthCard({inputFileParam,btnText,title,link, onSubmitForm}) {
     return ( 
         <Card>
             <Title>{title}</Title>
-            <FormLogin InputFileParam={InputFileParam} BtnText={BtnText}/>
+            <FormAuth inputFileParam={inputFileParam} btnText={btnText} onSubmitForm={onSubmitForm}/>
             <a href="">{link}</a>        
         </Card>
      );
@@ -26,4 +26,4 @@ const Card = styled.div`
         font-weight: 900;
     }
 `
-export default CardLogin;
+export default AuthCard;

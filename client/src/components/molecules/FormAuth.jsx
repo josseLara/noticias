@@ -4,12 +4,12 @@ import Button from "../atoms/Button";
 import {AiOutlineLogin} from 'react-icons/ai';
 
 
-function FormLogin({InputFileParam,BtnText}) {
+function FormAuth({inputFileParam,btnText,onSubmitForm}) {
     return (
-        <Login>
-            {InputFileParam.map((inputProps, index) => <InputField {...inputProps} key={index} />)}
+        <Login onSubmit={onSubmitForm}>
+            {inputFileParam.map((inputProps, index) => <InputField {...inputProps} key={index} />)}
             
-            <Button>{BtnText} <AiOutlineLogin/></Button>
+            <Button>{btnText} <AiOutlineLogin/></Button>
 
         </Login>
     );
@@ -42,4 +42,4 @@ const Login = styled.form`
   }
 `;
 
-export default FormLogin;
+export default FormAuth;
