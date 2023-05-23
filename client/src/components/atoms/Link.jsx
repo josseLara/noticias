@@ -31,7 +31,7 @@ let LinkItem = styled.li`
         display: inline;
         background-color: #1E74F6;
         position: absolute;
-        right: -30px;
+        right: 0px;
     }
     `}
 

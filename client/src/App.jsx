@@ -3,12 +3,11 @@ import Auth from './hoc/auth';
 import LoginPage from './components/pages/LoginPage';
 import LandingPage from './components/pages/LandingPage';
 import RegisterPage from './components/pages/RegisterPage';
+import StoragePage from './components/pages/StoragePage';
+import ProfilePage from './components/pages/Profilepage';
 // --> Template
-import LandingPageTemplate from './components/templates/LandingTemplate';
-import StoragePageTemplate from './components/templates/StorageTemplate';
-import ProfilePageTemplate from './components/templates/ProfileTemplate';
-import LoginTemplate from './components/templates/LoginTemplate';
-import RegisterTemplate from './components/templates/RegisterTemplate';
+
+
 
 function App() {
 /**
@@ -19,6 +18,9 @@ function App() {
   const AuthenticLandingPage = Auth(LandingPage, true);
   const AuthenticLoginPage = Auth(LoginPage, false);
   const AuthenticRegisterPage = Auth(RegisterPage, false);
+  const AuthenticStoragePage = Auth(StoragePage, true);
+  const AuthenticProfilePage = Auth(ProfilePage, true);
+
 
   return (
     <Router>
@@ -27,8 +29,8 @@ function App() {
           <Route path="/" element={<AuthenticLandingPage />} />
           <Route path="/login" element={<AuthenticLoginPage />} />
           <Route path="/register" element={<AuthenticRegisterPage />} />
-          {/* prueba */}
-          <Route path="/p" element={<RegisterTemplate />} />
+          <Route path="/storage" element={<AuthenticStoragePage />} />
+          <Route path="/profile" element={<AuthenticProfilePage />} />
         </Routes>
       {/* </Layout> */}
     </Router>

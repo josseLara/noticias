@@ -1,16 +1,13 @@
 import SecondaryNewsCard from "../organisms/SecondaryNewsCard";
-import MainNewsCard from "../organisms/MainNewsCard";
-import SideBar from "../organisms/SideBar";
-import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 import Layout from "./Layout";
 import Title from "../atoms/Title";
 
 
-function StoragePageTemplate() {
+function StoragePageTemplate( {sideBarData, tobBarData} ) {
     return (
 
-        <Layout>
+        <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
             <Content>
 
                 <Title>Storage</Title>

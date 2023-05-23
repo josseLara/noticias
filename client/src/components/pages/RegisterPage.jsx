@@ -2,7 +2,6 @@ import React, { useMemo, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { registerUser } from '../../_actions/user_action';
 import { useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import RegisterTemplate from '../templates/RegisterTemplate';
 
 function RegisterPage() {
@@ -126,67 +125,5 @@ function RegisterPage() {
   );
 }
 
-const Container = styled.div`
-  width: 100%;
-  height: calc(100vh - 176px);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`;
-const Title = styled.h1`
-  font-weight: 700;
-  font-size: 32px;
-  margin-bottom: 1rem;
-`;
-const RegisterForm = styled.form`
-  width: 380px;
-  height: auto;
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-`;
-const InputContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-
-  label {
-    font-size: 12px;
-    display: none;
-  }
-
-  input {
-    background-color: transparent;
-    border: none;
-    border-bottom: 1px solid #c7c7cc;
-    outline: none;
-    height: 2rem;
-    padding: 1.2rem 0;
-    transition: 0.35s all;
-    font-size: 14px;
-
-    &::placeholder {
-      color: #c7c7cc;
-    }
-
-    &:focus {
-      border-color: #1c1c1e;
-    }
-
-    &:valid {
-      border-color: #1c1c1e;
-    }
-  }
-`;
-const SubmitButton = styled.button`
-  background-color: #1c1c1e;
-  color: #f2f2f7;
-  border: none;
-  height: 3rem;
-  border-radius: 8px;
-  font-weight: 400;
-  cursor: pointer;
-  margin-top: 2rem;
-  font-size: 14px;
-`;
 
 export default RegisterPage;

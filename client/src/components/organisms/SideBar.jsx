@@ -1,20 +1,9 @@
 import { styled } from "styled-components";
 import SideBarLinks from "../molecules/SideBarLinks";
-import { BiNews } from 'react-icons/bi';
-import { MdOutlineAccountCircle, MdOutlineSportsBasketball } from 'react-icons/md';
-import {  AiOutlineInbox } from 'react-icons/ai'
-import {IoExit} from 'react-icons/io5';
 import BtnToggle from "../atoms/BtnToggle";
 
-let linksList =[
-    {txt:'News',icon:<BiNews/>,classLink:'active'},
-    {txt:'Store',icon:<AiOutlineInbox/>},
-    {txt:'Account',icon:<MdOutlineAccountCircle/>},
-]
-let linksList1 =[
-    {txt:'Log out',icon:<IoExit/>},
-]
-function SideBar() {
+
+function SideBar({user,links}) {
     return (
         <SideBarContent>
             
@@ -22,18 +11,18 @@ function SideBar() {
 
             {/* molecule */}
             <SideBarUser>
-                <img src="https://cdn.dribbble.com/userupload/5279196/file/original-e7ac5ca215cbd2df38d4165020026124.png?compress=1&resize=1504x1665&vertical=center" alt="user" />
+                <img src={user.img} alt="user" />
                 <div>
-                    <span className="name">elfaro jaldo</span>
+                    <span className="name">{user.name}</span>
                     <span className="connect">connect</span>
                 </div>
             </SideBarUser>
             {/*  */}
 
-            <SideBarLinks links={linksList} />
+            <SideBarLinks links={links[0]} />
 
             {/*  */}
-            <SideBarLinks links={linksList1} />
+            <SideBarLinks links={links[1]} />
             
             <div></div>
         </SideBarContent>
@@ -47,7 +36,7 @@ let SideBarContent = styled.aside`
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    
+    background-color: #0d1117;
     @media (max-width:700px) {
         position: absolute;
           left: 100vw;

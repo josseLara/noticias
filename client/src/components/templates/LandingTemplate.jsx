@@ -5,11 +5,10 @@ import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 import Layout from "./Layout";
 
-
-function LandingPageTemplate() {
+function LandingTemplate({sideBarData,tobBarData }) {
     return (
 
-        <Layout>
+        <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
             <Content>
 
                 <MainNewsCard />
@@ -48,4 +47,4 @@ const Cards = styled.div`
 
             `;
 
-export default LandingPageTemplate;
+export default LandingTemplate;

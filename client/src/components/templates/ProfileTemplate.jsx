@@ -1,15 +1,16 @@
 import { styled } from "styled-components";
 import Layout from "./Layout";
-
 import ProfileCard from "../molecules/ProfileCard";
 import InfoProfile from "../molecules/InfoProfile";
 import Button from "../atoms/Button";
 import {BsSave} from 'react-icons/bs';
+import { tobbarData } from "../../data/tobbarData";
+import { sidebarData } from "../../data/sideBarData";
 
-function ProfilePageTemplate() {
+function ProfileTemplate() {
     return (
 
-        <Layout>
+        <Layout sideBarData={sidebarData} tobBarData={tobbarData}>
             <Content>
                 <ProfileCard/>
                 <InfoProfile/>
@@ -41,4 +42,4 @@ const Content = styled.div`
         }
 `
 
-export default ProfilePageTemplate;
+export default ProfileTemplate;

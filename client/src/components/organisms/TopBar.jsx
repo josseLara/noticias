@@ -4,17 +4,13 @@ import { IoMdNotifications } from 'react-icons/io';
 import { RiMessage3Fill } from 'react-icons/ri';
 import Search from "../molecules/Search";
 
-let linksBar = [
-    { txt: "Sports", classLink: "activeV" },
-    { txt: "Finance" },
-    { txt: "Politics" },
-]
-function TopBar() {
+
+function TopBar({logo,links}) {
     return (
         <TobBar>
-            <img src="https://i.ytimg.com/vi/-DV9h8zTXwg/hqdefault.jpg?sqp=-oaymwEcCNACELwBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLBNus1KU53X_qzMYjnNk4DvJ3yYSg" alt="logo" />
+            <img src={logo} alt="logo" />
 
-            <TobBarLinks links={linksBar} />
+            <TobBarLinks links={links} />
 
             <IconsBar>
                 <IoMdNotifications />
@@ -32,6 +28,7 @@ const TobBar = styled.header`
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: #0d1117;
 
     img{
         grid-row: 1/2;

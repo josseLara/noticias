@@ -1,16 +1,18 @@
+import { useEffect } from "react";
 import SideBar from "../organisms/SideBar";
 import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 
 
-function Layout({children}) {
+function Layout({ children, sideBarData,tobBarData }) {
+
     return (
         <>
-            <TopBar />
+            <TopBar {...tobBarData}/>
 
             <Main>
-                <SideBar />     
-                    {children}
+                <SideBar {...sideBarData}/>
+                {children}
             </Main>
         </>
     );

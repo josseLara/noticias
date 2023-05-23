@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { getComment, saveComment } from "../../../_actions/comment_action";
+import { getComment, saveComment } from "../../_actions/comment_action";
+import LandingTemplate from "../templates/LandingTemplate";
+import { sidebarData } from "../../data/sideBarData";
+import { tobbarData } from "../../data/tobbarData";
 
 
 function LandingPage() {
@@ -24,7 +27,7 @@ function LandingPage() {
         //     }
         //   });
         // console.log(user.userData.email)
-        
+
         // ? obtener los comment por id
         // dispatch(getComment({id: 1})).then((response) => {
         //     if (response.payload.success) {
@@ -35,13 +38,10 @@ function LandingPage() {
         // });
     };
 
-    // --> borrar
+
     return (
-        <>
-            <h1>lading page</h1>
-            <button onClick={handleSaveComment}>click</button>  
-           
-        </>
+        <LandingTemplate sideBarData={sidebarData} tobBarData={tobbarData}/>
+
     );
 }
 
