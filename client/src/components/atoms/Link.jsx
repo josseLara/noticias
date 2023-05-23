@@ -1,11 +1,14 @@
 import { styled } from "styled-components";
+import { Link as RouterLink } from 'react-router-dom';
 
-function Link({ txt, icon = "", classLink="" }) {
+function Link({ txt, icon = "", classLink = "",href="" }) {
     return (
-        <LinkItem className={classLink} active={classLink}>
-            {icon}
-            {txt}
-        </LinkItem>
+        <RouterLink to={href}>
+            <LinkItem className={classLink} active={classLink}>
+                {icon}
+                {txt}
+            </LinkItem>
+        </RouterLink>
     );
 }
 
@@ -23,8 +26,8 @@ let LinkItem = styled.li`
         font-size: 1.4rem;
     }
 
-   ${props => props.active === 'active'  &&
-    ` &::after{
+   ${props => props.active === 'active' &&
+        ` &::after{
         content:' ';
         width: 3px;
         height: 100%;
@@ -35,8 +38,7 @@ let LinkItem = styled.li`
     }
     `}
 
-    ${
-        props => props.active === "activeV" &&
+    ${props => props.active === "activeV" &&
         `
         &::after{
         content: '';

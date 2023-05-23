@@ -8,9 +8,9 @@ export const sidebarData =
 {
     links: [
         [
-            { txt: 'News', icon: <BiNews />, classLink: 'active' },
-            { txt: 'Store', icon: <AiOutlineInbox /> },
-            { txt: 'Account', icon: <MdOutlineAccountCircle /> }
+            { txt: 'News', icon: <BiNews />, href:'/' ,classLink: null  },
+            { txt: 'Store', icon: <AiOutlineInbox />, href:'/storage',classLink: null },
+            { txt: 'Account', icon: <MdOutlineAccountCircle />, href:'/profile',classLink: null }
         ],
         [
             { txt: 'Log out', icon: <IoExit /> }

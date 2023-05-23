@@ -3,6 +3,8 @@ import { getComment, saveComment } from "../../_actions/comment_action";
 import LandingTemplate from "../templates/LandingTemplate";
 import { sidebarData } from "../../data/sideBarData";
 import { tobbarData } from "../../data/tobbarData";
+import { useEffect } from "react";
+import activeLinkSidebar from "../../helpers/activelinkSidebar";
 
 
 function LandingPage() {
@@ -16,6 +18,12 @@ function LandingPage() {
         "news_id": 1
     }
     const user = useSelector(state => state.user);
+
+    useEffect(()=>{
+        // sidebarData.user.name = user.userData.name;
+        // sidebarData.links[0][0].classLink= 'active'
+        activeLinkSidebar('News')
+    })
 
     let handleSaveComment = () => {
         // para que guarda la noticia
@@ -37,11 +45,10 @@ function LandingPage() {
         //     }
         // });
     };
-
+    
 
     return (
         <LandingTemplate sideBarData={sidebarData} tobBarData={tobbarData}/>
-
     );
 }
 
