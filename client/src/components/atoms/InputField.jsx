@@ -4,7 +4,7 @@ function InputField({label,InputValue="",InputType="text"}) {
     return (
             <Input>
                 <label htmlFor="">{label}</label>
-                <input type={InputType} value={InputValue}/>
+                <input type={InputType} defaultValue={InputValue}/>
             </Input>
     );
 }

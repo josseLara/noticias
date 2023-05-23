@@ -8,6 +8,7 @@ import LandingPageTemplate from './components/templates/LandingPageTemplate';
 import StoragePageTemplate from './components/templates/StoragePageTemplate';
 import ProfilePageTemplate from './components/templates/ProfilePageTemplate';
 import LoginTemplate from './components/templates/LoginTemplate';
+import RegisterTemplate from './components/templates/RegisterTemplate';
 
 function App() {
 /**
@@ -27,7 +28,7 @@ function App() {
           <Route path="/login" element={<AuthenticLoginPage />} />
           <Route path="/register" element={<AuthenticRegisterPage />} />
           {/* prueba */}
-          <Route path="/p" element={<LoginTemplate />} />
+          <Route path="/p" element={<RegisterTemplate />} />
         </Routes>
       {/* </Layout> */}
     </Router>

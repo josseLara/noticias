@@ -3,17 +3,14 @@ import InputField from "../atoms/InputField";
 import Button from "../atoms/Button";
 import {AiOutlineLogin} from 'react-icons/ai';
 
-let InputFileParam = [
-    { label: "Email", InputValue: "", InputType: "email" },
-    { label: "Password", InputValue: "", InputType: "password" },
 
-]
-function FormLogin() {
+function FormLogin({InputFileParam,BtnText}) {
     return (
         <Login>
             {InputFileParam.map((inputProps, index) => <InputField {...inputProps} key={index} />)}
             
-            <Button>Log In <AiOutlineLogin/></Button>
+            <Button>{BtnText} <AiOutlineLogin/></Button>
+
         </Login>
     );
 }
@@ -35,6 +32,13 @@ const Login = styled.form`
         align-items: center;
         gap: 10px;
         
+        svg{
+            font-size: 1.4rem;
+        }
+  }
+
+  @media (max-width:700px) {
+        width: 90%;
   }
 `;
 

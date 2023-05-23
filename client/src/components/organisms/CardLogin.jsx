@@ -2,11 +2,13 @@ import { styled } from "styled-components";
 import FormLogin from "../molecules/FormLogin";
 import Title from "../atoms/Title";
 
-function CardLogin() {
+
+function CardLogin({InputFileParam,BtnText,title,link}) {
     return ( 
         <Card>
-            <Title>Login</Title>
-            <FormLogin/>
+            <Title>{title}</Title>
+            <FormLogin InputFileParam={InputFileParam} BtnText={BtnText}/>
+            <a href="">{link}</a>        
         </Card>
      );
 }
@@ -20,7 +22,8 @@ const Card = styled.div`
     gap: 20px;
 
     h1{
-        font-size: 2rem;
+        font-size: 2.5rem;
+        font-weight: 900;
     }
 `
 export default CardLogin;

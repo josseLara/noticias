@@ -2,15 +2,17 @@ import { styled } from "styled-components";
 import CardLogin from "../organisms/CardLogin";
 
 let InputFileParam = [
+    { label: "Name", InputValue: "", InputType: "text" },
+    { label: "LastName", InputValue: "", InputType: "text" },
     { label: "Email", InputValue: "", InputType: "email" },
     { label: "Password", InputValue: "", InputType: "password" },
 
 ]
 
-function LoginTemplate() {
+function RegisterTemplate() {
     return (
         <Content>
-            <CardLogin InputFileParam={InputFileParam} BtnText="Sig In" title="Login" link="I forgot the password"/>
+            <CardLogin InputFileParam={InputFileParam} title="Register" BtnText="Send" link="I am registered"/>
         </Content>
     );
 }
@@ -28,4 +30,4 @@ const Content = styled.div`
     text-decoration: underline;
   }
 `
-export default LoginTemplate;
+export default RegisterTemplate;
