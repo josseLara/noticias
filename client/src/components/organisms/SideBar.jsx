@@ -7,11 +7,11 @@ import {IoExit} from 'react-icons/io5';
 import BtnToggle from "../atoms/BtnToggle";
 
 let linksList =[
-    {txt:'News',icon:<BiNews/>},
+    {txt:'News',icon:<BiNews/>,classLink:'active'},
     {txt:'Store',icon:<AiOutlineInbox/>},
+    {txt:'Account',icon:<MdOutlineAccountCircle/>},
 ]
 let linksList1 =[
-    {txt:'Account',icon:<MdOutlineAccountCircle/>},
     {txt:'Log out',icon:<IoExit/>},
 ]
 function SideBar() {

@@ -1,7 +1,7 @@
 import SecondaryNewsCard from "../organisms/SecondaryNewsCard";
 import MainNewsCard from "../organisms/MainNewsCard";
 import SideBar from "../organisms/SideBar";
-import TopBar from "../molecules/topbar";
+import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 import Layout from "./Layout";
 

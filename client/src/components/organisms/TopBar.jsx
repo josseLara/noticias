@@ -1,11 +1,11 @@
 import { styled } from "styled-components";
-import TobBarLinks from "./TobBarLinks";
+import TobBarLinks from "../molecules/TobBarLinks";
 import { IoMdNotifications } from 'react-icons/io';
 import { RiMessage3Fill } from 'react-icons/ri';
-import Search from "./Search";
+import Search from "../molecules/Search";
 
 let linksBar = [
-    { txt: "Sports", className: "active" },
+    { txt: "Sports", classLink: "activeV" },
     { txt: "Finance" },
     { txt: "Politics" },
 ]

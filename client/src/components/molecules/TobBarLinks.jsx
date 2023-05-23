@@ -21,18 +21,11 @@ const Links = styled.ul`
     align-items: center;
     gap: 20px;
 
-    .active{
+    .activeV{
         color: #1E74F6;
         position: relative;
     }
-    .active::after{
-        content: '';
-        width: 100%;
-        height: 2px;
-        background-color: #1E74F6;
-        position: absolute;
-        bottom: -10px;
-    }
+  
     li:hover{
         color: #1E74F6;
         cursor: pointer;
