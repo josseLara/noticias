@@ -2,17 +2,17 @@ import styled from 'styled-components';
 import { BsBookmark, BsShare } from 'react-icons/bs';
 import CardFooter from '../molecules/CardFooter';
 
-function SecondaryNewsCard() {
+function SecondaryNewsCard({title,urlToImage,url,publishedAt,source,author}) {
     return (
         <Card>
-            <img src="https://cdn.dribbble.com/userupload/5279196/file/original-e7ac5ca215cbd2df38d4165020026124.png?compress=1&resize=1504x1665&vertical=center" className="img" alt="new" />
+            <img src={urlToImage} className="img" alt="new" />
 
             <CardContent>
-                <span>Jobs</span>
-                <h3>Una noticia inolvidable</h3>
+                <span>{source?.name}</span>
+                <h3>{title}</h3>
             </CardContent>
 
-        <CardFooter/>
+        <CardFooter author={author}/>
         </Card>
     );
 }
@@ -21,7 +21,7 @@ const Card = styled.div`
     width: 350px;
     display: flex;
     flex-direction: column;
-
+    justify-content: space-between;
     .img{
         object-fit: cover;
         height: 240px;

@@ -3,27 +3,40 @@ import { getComment, saveComment } from "../../_actions/comment_action";
 import LandingTemplate from "../templates/LandingTemplate";
 import { sidebarData } from "../../data/sideBarData";
 import { tobbarData } from "../../data/tobbarData";
-import { useEffect } from "react";
-import activeLinkSidebar from "../../helpers/activelinkSidebar";
+import { useEffect, useState } from "react";
+import { getNewsGeneral } from "../../_actions/news_action";
+import activeLinkBar from "../../helpers/activeLinkBar";
 
 
 function LandingPage() {
+    let [categoryNews, setCategoryNews] = useState('general');
+    const onCategoryNewsHandler = (category) => {
+        setCategoryNews(category);
+      };
     // borrar
     let dispatch = useDispatch();
-    let body = {
-        "name": "jos",
-        "email": "josse@gmail.com",
-        "comment": "holl",
-        "created_at": "2022-02-01",
-        "news_id": 1
-    }
     const user = useSelector(state => state.user);
+    let newsData = useSelector(state => state.news);
 
-    useEffect(()=>{
+    useEffect(() => {
         // sidebarData.user.name = user.userData.name;
-        // sidebarData.links[0][0].classLink= 'active'
-        activeLinkSidebar('News')
-    })
+        // SideBar active event 
+        activeLinkBar( 'News',true);
+    }, [])
+
+    useEffect(() => {
+        // data de news
+        activeLinkBar(categoryNews,false);
+        if (newsData) {
+            dispatch(getNewsGeneral(categoryNews)).then((response) => {
+                if (response.payload.status == "ok") {
+
+                } else {
+                    alert('error save comment');
+                }
+            });
+        }
+    }, [categoryNews])
 
     let handleSaveComment = () => {
         // para que guarda la noticia
@@ -45,10 +58,13 @@ function LandingPage() {
         //     }
         // });
     };
-    
+
+
+
 
     return (
-        <LandingTemplate sideBarData={sidebarData} tobBarData={tobbarData}/>
+        <LandingTemplate sideBarData={sidebarData}  onCategoryNewsHandler={onCategoryNewsHandler}
+        tobBarData={tobbarData} newsData={newsData?.allNews?.articles ?? null} />
     );
 }
 

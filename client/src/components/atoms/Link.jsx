@@ -1,9 +1,12 @@
 import { styled } from "styled-components";
 import { Link as RouterLink } from 'react-router-dom';
 
-function Link({ txt, icon = "", classLink = "",href="" }) {
+function Link({ txt, icon = "", classLink = "", href = "", onCategoryNewsHandler = null }) {
     return (
-        <RouterLink to={href}>
+        <RouterLink to={href} onClick={() => {
+            if (onCategoryNewsHandler) { onCategoryNewsHandler(txt.toLowerCase()) }
+        }
+        }>
             <LinkItem className={classLink} active={classLink}>
                 {icon}
                 {txt}

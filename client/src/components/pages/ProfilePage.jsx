@@ -1,13 +1,12 @@
-import { useCallback, useEffect } from 'react';
 import {  sidebarData } from '../../data/sideBarData';
 import { tobbarData } from '../../data/tobbarData';
 import ProfileTemplate from '../templates/ProfileTemplate';
-import activeLinkSidebar from '../../helpers/activelinkSidebar';
+import activeLinkBar from '../../helpers/activeLinkBar';
 
 
 function ProfilePage() {
 
-   activeLinkSidebar('Account')
+    activeLinkBar('Account',true);
 
     return (
         <ProfileTemplate  sideBarData={sidebarData} tobBarData={tobbarData}/>

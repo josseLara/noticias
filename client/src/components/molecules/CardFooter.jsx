@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { BsBookmark, BsShare } from 'react-icons/bs';
 
-function CardFooter() {
+function CardFooter({author}) {
 
     return (
 
@@ -9,7 +9,7 @@ function CardFooter() {
 
                 <CardUserDetails>
                     <img src="https://cdn.dribbble.com/userupload/5279195/file/original-5d3fba6e970888c73e4c8a34a6df91ad.png?compress=1&resize=1504x1128" alt="" />
-                    <span>Helena Tgorn</span>
+                    <span>{author}</span>
                 </CardUserDetails>
 
                 <div className="btns">

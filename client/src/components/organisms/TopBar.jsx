@@ -5,12 +5,12 @@ import { RiMessage3Fill } from 'react-icons/ri';
 import Search from "../molecules/Search";
 
 
-function TopBar({logo,links}) {
+function TopBar({logo,links,onCategoryNewsHandler}) {
     return (
         <TobBar>
             <img src={logo} alt="logo" />
 
-            <TobBarLinks links={links} />
+            <TobBarLinks links={links} onCategoryNewsHandler={onCategoryNewsHandler}/>
 
             <IconsBar>
                 <IoMdNotifications />

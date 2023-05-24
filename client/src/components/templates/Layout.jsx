@@ -4,11 +4,11 @@ import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 
 
-function Layout({ children, sideBarData,tobBarData }) {
+function Layout({ children, sideBarData,tobBarData,onCategoryNewsHandler }) {
 
     return (
         <>
-            <TopBar {...tobBarData}/>
+            <TopBar {...tobBarData} onCategoryNewsHandler={onCategoryNewsHandler}/>
 
             <Main>
                 <SideBar {...sideBarData}/>

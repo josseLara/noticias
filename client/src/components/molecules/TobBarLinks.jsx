@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
 import Link from "../atoms/Link";
 
-function TobBarLinks({links}) {
+function TobBarLinks({links,onCategoryNewsHandler}) {
     return (
         <Links>
             {
                links.map((link,index)=>{
-                    return  <Link {...link}  key={index}/> 
+                    return  <Link {...link} key={index} onCategoryNewsHandler={onCategoryNewsHandler}/> 
                })
             }
         </Links>

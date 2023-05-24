@@ -5,19 +5,18 @@ import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 import Layout from "./Layout";
 
-function LandingTemplate({sideBarData,tobBarData }) {
+function LandingTemplate({sideBarData,tobBarData,newsData,onCategoryNewsHandler }) {
     return (
 
-        <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
+        <Layout sideBarData={sideBarData} tobBarData={tobBarData} onCategoryNewsHandler={onCategoryNewsHandler}>
             <Content>
 
-                <MainNewsCard />
-                <SecondaryNewsCard />
+            {newsData && newsData.length > 0 && <MainNewsCard {...newsData[0]} />}
+            {newsData && newsData.length > 1 && <SecondaryNewsCard {...newsData[1]} />}
 
                 <Cards className="cards">
-                    <SecondaryNewsCard />
-                    <SecondaryNewsCard />
-                    <SecondaryNewsCard />
+                   {newsData &&
+                    newsData.slice(2) .map((news,index)=> <SecondaryNewsCard  {...news} key={index}/>)}
                 </Cards>
 
             </Content>

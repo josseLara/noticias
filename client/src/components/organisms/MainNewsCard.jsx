@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import { BsBookmark, BsShare } from 'react-icons/bs';
 import CardFooter from '../molecules/CardFooter';
 
-function MainNewsCard() {
+function MainNewsCard({ title, urlToImage = "", url, publishedAt, source, author }) {
 
   return (
-    <Card>
-      <span>Travel</span>
-      <h1>30 años de gloria para el superior</h1>
+    <Card image={urlToImage}>
+      <span>{source?.name}</span>
+      <h1>{title ?? null}</h1>
 
-      <CardFooter />
+      <CardFooter author/>
     </Card>
   );
 }
@@ -25,7 +25,9 @@ display: flex;
 flex-direction: column;
 justify-content: end;
 position: relative;
-background-image: url(https://cdn.dribbble.com/userupload/5279196/file/original-e7ac5ca215cbd2df38d4165020026124.png?compress=1&resize=1504x1665&vertical=center);
+background-image: url(${props => props.image});
+background-repeat: no-repeat;
+background-size: cover;
 padding:10px;
 padding-right: 20px;
 margin-right: 5%;
