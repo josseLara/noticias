@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import routerComment from './routes/comment.js';
 import routerUser from './routes/users.js';
 import cors from 'cors';
+import routerSaveNews from './routes/savedNews.js';
 
 // backend server
 const app = express();
@@ -17,6 +18,7 @@ app.use(cookieParser());
 
 app.use('/api/comment', routerComment);
 app.use('/api/user', routerUser);
+app.use('/api/savedNews', routerSaveNews);
 
 // Serving static assets when in production
 if (process.env.NODE_ENV === 'production') {

@@ -4,6 +4,8 @@ export const AUTH_USER = "auth_user";
 
 // NEWS
 export const ALL_NEWS = "all_news";
+export const STORAGE_NEWS = "storage_news";
+
 
 // comments
 export const SAVE_COMMENTS = "save_comments";

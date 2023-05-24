@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_NEWS } from './types';
+import { ALL_NEWS, STORAGE_NEWS } from './types';
 
 
 export function getNewsGeneral(category) {
@@ -14,5 +14,27 @@ export function getNewsGeneral(category) {
 }
 
 
+export function getStorageNews(user) {
+  const request = axios
+    .post(`http://localhost:8080/api/savedNews/getSaveNews`,user)
+    .then((response) => response.data);
+
+  return {
+    type: STORAGE_NEWS,
+    payload: request,
+  };
+}
+
+
+export function saveStorageNews(news) {
+  const request = axios
+    .post(`http://localhost:8080/api/savedNews/save`,news)
+    .then((response) => response.data);
+
+  return {
+    type: STORAGE_NEWS,
+    payload: request,
+  };
+}
 
 

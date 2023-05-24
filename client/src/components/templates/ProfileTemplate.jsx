@@ -5,7 +5,7 @@ import InfoProfile from "../molecules/InfoProfile";
 import Button from "../atoms/Button";
 import {BsSave} from 'react-icons/bs';
 
-function ProfileTemplate({sideBarData,tobBarData,inputFileParam}) {
+function ProfileTemplate({sideBarData,tobBarData,inputFileParam,userData}) {
     return (
 
         <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
@@ -22,7 +22,6 @@ function ProfileTemplate({sideBarData,tobBarData,inputFileParam}) {
 
     );
 }
-
 
 // 
 

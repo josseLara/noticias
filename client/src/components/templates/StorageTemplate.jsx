@@ -4,7 +4,8 @@ import Layout from "./Layout";
 import Title from "../atoms/Title";
 
 
-function StoragePageTemplate( {sideBarData, tobBarData} ) {
+function StoragePageTemplate( {sideBarData, tobBarData,storageNews} ) {
+ 
     return (
 
         <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
@@ -12,12 +13,12 @@ function StoragePageTemplate( {sideBarData, tobBarData} ) {
 
                 <Title>Storage</Title>
                 <Cards className="cards">
-                    <SecondaryNewsCard />
-                    <SecondaryNewsCard />
-                    <SecondaryNewsCard />
-                    <SecondaryNewsCard />
-                    <SecondaryNewsCard />
-                    <SecondaryNewsCard />
+                    {
+                      storageNews != 0  && storageNews.data.map((news,index)=>{
+                        return( <SecondaryNewsCard {...news} key={index}/>)
+                    })
+                    }
+                
                 </Cards>
 
             </Content>
