@@ -1,7 +1,7 @@
 import { styled } from "styled-components";
 import Title from "../atoms/Title";
 import {RiImageEditLine} from 'react-icons/ri'
-function ProfileCard() {
+function ProfileCard({userData}) {
     return ( 
         <Card>
 
@@ -11,8 +11,8 @@ function ProfileCard() {
             </ProfileImagen>
 
             <Description>
-                <Title>Yoel Erañ</Title>
-                <span>California</span>
+                <Title>{userData?.name ?? ""}</Title>
+                <span>{userData?.email ?? ""}</span>
             </Description>
         </Card>
      );

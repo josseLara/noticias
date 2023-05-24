@@ -1,16 +1,11 @@
 import { styled } from "styled-components";
 import InputField from "../atoms/InputField";
 
-let InputFileParam = [
-    {label:"Nombre",InputValue:"Marcos",InputType:"text"},
-    {label:"Full Name",InputValue:"Marcos",InputType:"text"},
-    {label:"Phone Number",InputValue:"Marcos",InputType:"text"},
-    {label:"Email Address",InputValue:"Marcos",InputType:"text"},
-]
-function InfoProfile() {
+
+function InfoProfile({inputFileParam}) {
     return (
         <Info onSubmit={() => null}>
-           {InputFileParam.map((inputProps,index)=> <InputField {...inputProps} key={index}/>)}
+           {inputFileParam.map((inputProps,index)=> <InputField {...inputProps} key={index}/>)}
         </Info>
     );
 }

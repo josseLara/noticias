@@ -4,16 +4,14 @@ import ProfileCard from "../molecules/ProfileCard";
 import InfoProfile from "../molecules/InfoProfile";
 import Button from "../atoms/Button";
 import {BsSave} from 'react-icons/bs';
-import { tobbarData } from "../../data/tobbarData";
-import { sidebarData } from "../../data/sideBarData";
 
-function ProfileTemplate() {
+function ProfileTemplate({sideBarData,tobBarData,inputFileParam}) {
     return (
 
-        <Layout sideBarData={sidebarData} tobBarData={tobbarData}>
+        <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
             <Content>
-                <ProfileCard/>
-                <InfoProfile/>
+                <ProfileCard userData={userData}/>
+                <InfoProfile inputFileParam={inputFileParam} />
 
                 <Button>
                     <BsSave />
