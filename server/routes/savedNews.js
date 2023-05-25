@@ -62,15 +62,13 @@ routerSaveNews.post('/save', async (req, res) => {
 routerSaveNews.post('/remove', async (req, res) => {
   try {
     // Extract data from request body
-    let { author, title, url, urlToImage, publishedAt, idUser } = req.body;
-    let commentReceived = [author, title, url, urlToImage, publishedAt, idUser];
+    let {  url,idUser } = req.body;
 
     // SQL query to insert comment into database
-    let querySql = `DELETE FROM savenews WHERE url = '${url}' AND idUser = ${idUser}`;
-
+    let querySql = `DELETE FROM savenews WHERE url= ? AND idUser= ?`;
     // Execute query and wait for result
     let removeNews = await new Promise((resolve, reject) => {
-      connectionDB.query(querySql, commentReceived, (error, results, fields) => {
+      connectionDB.query(querySql, [url,idUser], (error, results, fields) => {
         if (error) {
           reject(error);
         } else {

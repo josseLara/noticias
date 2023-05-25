@@ -10,9 +10,10 @@ export default function newsReducer(state = {}, action) {
       return { ...state, storageNews: action.payload };
 
     case REMOVE_STORAGE_NEWS:
+     
       return {
         ...state,
-        storageNews: state.storageNews.data.filter(news => news.url !== action.payload.url)
+        storageNews:{ data : state.storageNews.data.filter(news => news.url !== action.payload.data[0].url)}
       };
 
     default:

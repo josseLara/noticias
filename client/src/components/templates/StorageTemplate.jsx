@@ -2,10 +2,11 @@ import SecondaryNewsCard from "../organisms/SecondaryNewsCard";
 import { styled } from "styled-components";
 import Layout from "./Layout";
 import Title from "../atoms/Title";
+import { useSelector } from "react-redux";
 
 
-function StoragePageTemplate( {sideBarData, tobBarData,storageNews =[]} ) {
-        
+function StoragePageTemplate( {sideBarData, tobBarData,storageData } ) {
+
     return (
 
         <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
@@ -15,7 +16,7 @@ function StoragePageTemplate( {sideBarData, tobBarData,storageNews =[]} ) {
                 <Cards className="cards">
                     {
                         
-                      storageNews.length !== 0   && storageNews.data.map((news,index)=>{
+                        storageData && storageData.map((news,index)=>{
                         
                         return <SecondaryNewsCard {...news} key={index}/>
                     })

@@ -2,14 +2,14 @@ import styled from 'styled-components';
 import { BsBookmark, BsShare } from 'react-icons/bs';
 import CardFooter from '../molecules/CardFooter';
 
-function MainNewsCard({ title, urlToImage = "", url, publishedAt, source, author }) {
+function MainNewsCard({ title, urlToImage, url, publishedAt, source, author }) {
 
   return (
     <Card image={urlToImage}>
       <span>{source?.name}</span>
       <h1>{title ?? null}</h1>
 
-      <CardFooter author/>
+      <CardFooter  author={author ?? ""} title={title} urlToImage={urlToImage} url={url} publishedAt={publishedAt}/>
     </Card>
   );
 }

@@ -13,7 +13,7 @@ function SecondaryNewsCard({title,urlToImage,url,publishedAt,source,author}) {
             </CardContent>
 
         <CardFooter 
-        author={author ?? " "} title={title} urlToImage={urlToImage} url={url} publishedAt={publishedAt} />
+        author={author ?? ""} title={title} urlToImage={urlToImage} url={url} publishedAt={publishedAt} />
         </Card>
     );
 }

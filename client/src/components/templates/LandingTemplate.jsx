@@ -11,7 +11,7 @@ function LandingTemplate({sideBarData,tobBarData,newsData,onCategoryNewsHandler}
         <Layout sideBarData={sideBarData} tobBarData={tobBarData} onCategoryNewsHandler={onCategoryNewsHandler}>
             <Content>
 
-            {newsData && newsData.length > 0 && <MainNewsCard {...newsData[0]} />}
+            {newsData && newsData.length > 1 && <MainNewsCard {...newsData[0]} />}
             {newsData && newsData.length > 1 && <SecondaryNewsCard {...newsData[1]} />}
 
                 <Cards className="cards">

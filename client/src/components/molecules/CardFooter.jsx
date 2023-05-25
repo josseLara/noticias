@@ -21,10 +21,10 @@ function CardFooter({ title, urlToImage, url, publishedAt, author }) {
   }
 
   useEffect(() => {
-    if (storageData.data.length != 0) {
+    if (storageData?.data) {
       setBookmarkSeleted(storageData.data.some((news) => news.url == url))
     }
-  }, [newsUpdate])
+  }, [newsUpdate,storageData])
 
   return (
 
@@ -53,8 +53,12 @@ const CardInfo = styled.div`
    .btns{
     display: flex;
     gap: 10px;
-        font-size: 1.3rem;
-        z-index: 4;
+    font-size: 1.3rem;
+    z-index: 4;
+
+    svg{
+      z-index: 1000;
+    }
    }
 `;
 
@@ -74,7 +78,7 @@ const CardUserDetails = styled.div`
   span{
     font-size: 1rem;
   }
-  
+    
 `;
 
 export default CardFooter;

@@ -10,9 +10,8 @@ function StoragePage() {
   // obtener los datos de las noticias guardadas en la db
   const dispatch = useDispatch();
   const user = useSelector((state) => state.user.userData);
-  const storageData = useSelector((state) => state.news.storageNews);
   const [loading, setLoading] = useState(true);
-
+    const storageNews = useSelector((state) => state.news.storageNews?.data);
 
   useEffect(() => {
     if(user){  
@@ -30,10 +29,11 @@ function StoragePage() {
   activeLinkBar('Store', true);
 
   return (
+    
     <StorageTemplate
       sideBarData={sidebarData}
       tobBarData={tobbarData}
-      storageNews={loading ? [] : storageData?.data }
+      storageData={loading ?  []: storageNews }
     />
   );
 }
