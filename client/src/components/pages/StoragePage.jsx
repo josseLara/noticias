@@ -15,13 +15,15 @@ function StoragePage() {
 
 
   useEffect(() => {
-    dispatch(getStorageNews(user)).then((response) => {
-      if (response.payload.success) {
-        setLoading(false)
-      } else {
-        alert('Error getting saved news');
-      }
-    });
+    if(user){  
+      dispatch(getStorageNews(user)).then((response) => {
+        if (response.payload.success) {
+          setLoading(false)
+        } else {
+          alert('Error getting saved news');
+        }
+      });
+    }
   }, [user]);
 
   // data components
@@ -31,7 +33,7 @@ function StoragePage() {
     <StorageTemplate
       sideBarData={sidebarData}
       tobBarData={tobbarData}
-      storageNews={loading ? [] : storageData }
+      storageNews={loading ? [] : storageData?.data }
     />
   );
 }

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { BsBookmark, BsShare } from 'react-icons/bs';
 import CardFooter from '../molecules/CardFooter';
 
-function SecondaryNewsCard({title,urlToImage,url,publishedAt,source,author,onSaveStorageHandler,onRemoveStorageHandler}) {
+function SecondaryNewsCard({title,urlToImage,url,publishedAt,source,author}) {
     return (
         <Card>
             <img src={urlToImage} className="img" alt="new" />
@@ -13,8 +13,7 @@ function SecondaryNewsCard({title,urlToImage,url,publishedAt,source,author,onSav
             </CardContent>
 
         <CardFooter 
-        author={author ?? " "} title={title} urlToImage={urlToImage} url={url} publishedAt={publishedAt} 
-        onSaveStorageHandler={onSaveStorageHandler} onRemoveStorageHandler={onRemoveStorageHandler}/>
+        author={author ?? " "} title={title} urlToImage={urlToImage} url={url} publishedAt={publishedAt} />
         </Card>
     );
 }

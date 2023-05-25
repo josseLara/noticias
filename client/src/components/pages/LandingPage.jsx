@@ -4,7 +4,7 @@ import LandingTemplate from "../templates/LandingTemplate";
 import { sidebarData } from "../../data/sideBarData";
 import { tobbarData } from "../../data/tobbarData";
 import { useEffect, useState } from "react";
-import { getNewsGeneral, getStorageNews, removeStorageNews, saveStorageNews } from "../../_actions/news_action";
+import { getNewsGeneral, getStorageNews } from "../../_actions/news_action";
 import activeLinkBar from "../../helpers/activeLinkBar";
 
 
@@ -12,30 +12,33 @@ function LandingPage() {
     let [categoryNews, setCategoryNews] = useState('general');
     const onCategoryNewsHandler = (category) => {
         setCategoryNews(category);
-      };
-    // borrar
+    };
+
     let dispatch = useDispatch();
     const user = useSelector(state => state.user);
     let newsData = useSelector(state => state.news);
-    
+
     useEffect(() => {
         // SideBar active event 
-        activeLinkBar( 'News',true);
-    
+        activeLinkBar('News', true);
+        if (user.userData) {
+
             dispatch(getStorageNews(user.userData)).then((response) => {
                 if (response.payload.success) {
-                  
+
                 } else {
-                  alert('Error getting saved news');
+                    alert('Error getting saved news');
                 }
-              });
+            });
+        }
 
     }, [user])
 
     useEffect(() => {
         // data de news
-        activeLinkBar(categoryNews,false);
-        if (!newsData) {
+        activeLinkBar(categoryNews, false);
+
+        if (newsData) {
             dispatch(getNewsGeneral(categoryNews)).then((response) => {
                 if (response.payload.status == "ok") {
 
@@ -67,19 +70,10 @@ function LandingPage() {
         // });
     };
 
-    let onSaveStorageHandler = (news)=>{
-        news.idUser = user.userData.id;
-        dispatch(saveStorageNews(news))
-    }
-    let onRemoveStorageHandler = (news)=>{
-        news.idUser = user.userData.id;
-        dispatch(removeStorageNews(news))
-    }
-    
     return (
-        <LandingTemplate sideBarData={sidebarData}  onCategoryNewsHandler={onCategoryNewsHandler}
-        tobBarData={tobbarData} newsData={newsData?.allNews?.articles ?? null} 
-        onSaveStorageHandler={onSaveStorageHandler} onRemoveStorageHandler={onRemoveStorageHandler}/>
+        <LandingTemplate sideBarData={sidebarData} onCategoryNewsHandler={onCategoryNewsHandler}
+            tobBarData={tobbarData} newsData={newsData?.allNews?.articles ?? null}
+            />
     );
 }
 

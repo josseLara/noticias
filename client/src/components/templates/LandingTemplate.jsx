@@ -5,7 +5,7 @@ import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 import Layout from "./Layout";
 
-function LandingTemplate({sideBarData,tobBarData,newsData,onCategoryNewsHandler,onSaveStorageHandler,onRemoveStorageHandler }) {
+function LandingTemplate({sideBarData,tobBarData,newsData,onCategoryNewsHandler}) {
     return (
 
         <Layout sideBarData={sideBarData} tobBarData={tobBarData} onCategoryNewsHandler={onCategoryNewsHandler}>
@@ -16,8 +16,7 @@ function LandingTemplate({sideBarData,tobBarData,newsData,onCategoryNewsHandler,
 
                 <Cards className="cards">
                    {newsData &&
-                    newsData.slice(2) .map((news,index)=> <SecondaryNewsCard  {...news} 
-                    onSaveStorageHandler={onSaveStorageHandler} onRemoveStorageHandler={onRemoveStorageHandler} key={index}/>)}
+                    newsData.slice(2) .map((news,index)=> <SecondaryNewsCard  {...news}  key={index}/>)}
                 </Cards>
 
             </Content>

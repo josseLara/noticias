@@ -1,26 +1,30 @@
 import styled from 'styled-components';
 import { BsBookmark, BsShare, BsBookmarkStarFill } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+import { onRemoveStorageHandler, onSaveStorageHandler } from '../../helpers/newsStorage';
 
-function CardFooter({ title,urlToImage,url,publishedAt,author,onSaveStorageHandler,onRemoveStorageHandler }) {
+function CardFooter({ title, urlToImage, url, publishedAt, author }) {
   let [bookmarkSeleted, setBookmarkSeleted] = useState(false);
+  const user = useSelector((state) => state.user);
   const storageData = useSelector((state) => state.news.storageNews);
- 
+  const newsUpdate = useSelector((state) => state.news.allNews);
+  const dispatch = useDispatch();
+
   let bookmarkHandler = () => {
     setBookmarkSeleted(!bookmarkSeleted)
-    if(!bookmarkSeleted){
-      onSaveStorageHandler({title,urlToImage,url,publishedAt,author})
-    }else{
-      onRemoveStorageHandler({title,urlToImage,url,publishedAt,author})
+    if (!bookmarkSeleted) {
+      onSaveStorageHandler(dispatch,{ title, urlToImage, url, publishedAt, author },user)
+    } else {
+      onRemoveStorageHandler(dispatch,{ title, urlToImage, url, publishedAt, author },user)
     }
   }
-  
-  useEffect(()=> {
-    if(storageData.data.length != 0){
+
+  useEffect(() => {
+    if (storageData.data.length != 0) {
       setBookmarkSeleted(storageData.data.some((news) => news.url == url))
     }
-  },[])
+  }, [newsUpdate])
 
   return (
 
@@ -32,7 +36,7 @@ function CardFooter({ title,urlToImage,url,publishedAt,author,onSaveStorageHandl
       </CardUserDetails>
 
       <div className="btns">
-        {bookmarkSeleted ? <BsBookmarkStarFill onClick={bookmarkHandler} /> : <BsBookmark onClick={bookmarkHandler} /> }
+        {bookmarkSeleted ? <BsBookmarkStarFill onClick={bookmarkHandler} /> : <BsBookmark onClick={bookmarkHandler} />}
         <BsShare />
       </div>
     </CardInfo>
