@@ -1,14 +1,27 @@
 import styled from 'styled-components';
 import { BsBookmark, BsShare, BsBookmarkStarFill } from 'react-icons/bs';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useSelector } from 'react-redux';
 
-function CardFooter({ title,urlToImage,url,publishedAt,author,onSaveStorageHandler }) {
+function CardFooter({ title,urlToImage,url,publishedAt,author,onSaveStorageHandler,onRemoveStorageHandler }) {
   let [bookmarkSeleted, setBookmarkSeleted] = useState(false);
-
+  const storageData = useSelector((state) => state.news.storageNews);
+ 
   let bookmarkHandler = () => {
     setBookmarkSeleted(!bookmarkSeleted)
-    onSaveStorageHandler({title,urlToImage,url,publishedAt,author})
+    if(!bookmarkSeleted){
+      onSaveStorageHandler({title,urlToImage,url,publishedAt,author})
+    }else{
+      onRemoveStorageHandler({title,urlToImage,url,publishedAt,author})
+    }
   }
+  
+  useEffect(()=> {
+    if(storageData.data.length != 0){
+      setBookmarkSeleted(storageData.data.some((news) => news.url == url))
+    }
+  },[])
+
   return (
 
     <CardInfo>

@@ -4,7 +4,7 @@ import LandingTemplate from "../templates/LandingTemplate";
 import { sidebarData } from "../../data/sideBarData";
 import { tobbarData } from "../../data/tobbarData";
 import { useEffect, useState } from "react";
-import { getNewsGeneral, saveStorageNews } from "../../_actions/news_action";
+import { getNewsGeneral, getStorageNews, removeStorageNews, saveStorageNews } from "../../_actions/news_action";
 import activeLinkBar from "../../helpers/activeLinkBar";
 
 
@@ -21,12 +21,21 @@ function LandingPage() {
     useEffect(() => {
         // SideBar active event 
         activeLinkBar( 'News',true);
-    }, [])
+    
+            dispatch(getStorageNews(user.userData)).then((response) => {
+                if (response.payload.success) {
+                  
+                } else {
+                  alert('Error getting saved news');
+                }
+              });
+
+    }, [user])
 
     useEffect(() => {
         // data de news
         activeLinkBar(categoryNews,false);
-        if (newsData) {
+        if (!newsData) {
             dispatch(getNewsGeneral(categoryNews)).then((response) => {
                 if (response.payload.status == "ok") {
 
@@ -62,14 +71,15 @@ function LandingPage() {
         news.idUser = user.userData.id;
         dispatch(saveStorageNews(news))
     }
-    // let onRemoveStorage = (news,)=>{
-    //     dispatch(saveStorageNews(news))
-    // }
-
+    let onRemoveStorageHandler = (news)=>{
+        news.idUser = user.userData.id;
+        dispatch(removeStorageNews(news))
+    }
+    
     return (
         <LandingTemplate sideBarData={sidebarData}  onCategoryNewsHandler={onCategoryNewsHandler}
         tobBarData={tobbarData} newsData={newsData?.allNews?.articles ?? null} 
-        onSaveStorageHandler={onSaveStorageHandler}/>
+        onSaveStorageHandler={onSaveStorageHandler} onRemoveStorageHandler={onRemoveStorageHandler}/>
     );
 }
 

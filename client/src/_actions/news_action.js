@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { ALL_NEWS, STORAGE_NEWS } from './types';
+import { ALL_NEWS, REMOVE_STORAGE_NEWS, STORAGE_NEWS } from './types';
 
 
 export function getNewsGeneral(category) {
@@ -33,6 +33,18 @@ export function saveStorageNews(news) {
 
   return {
     type: STORAGE_NEWS,
+    payload: request,
+  };
+}
+
+
+export function removeStorageNews(news) {
+  const request = axios
+    .post(`http://localhost:8080/api/savedNews/remove`,news)
+    .then((response) => response.data);
+
+  return {
+    type: REMOVE_STORAGE_NEWS,
     payload: request,
   };
 }

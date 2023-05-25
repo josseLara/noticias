@@ -5,6 +5,7 @@ export const AUTH_USER = "auth_user";
 // NEWS
 export const ALL_NEWS = "all_news";
 export const STORAGE_NEWS = "storage_news";
+export const REMOVE_STORAGE_NEWS = "remove_storage_news";
 
 
 // comments
