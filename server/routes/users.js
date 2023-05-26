@@ -22,7 +22,7 @@ routerUser.post('/auth', authMiddleware, async (req, res) => {
 
         delete user[0].password;
 
-        res.status(200).json({...user[0],isAuth:true})
+        res.status(200).json({ ...user[0], isAuth: true })
 
     } catch (err) {
         next(err);
@@ -132,6 +132,49 @@ routerUser.post('/login', createToken, async (req, res) => {
     }
 });
 
+
+/**
+ * POST /register
+ * Create a new user.
+ */
+
+routerUser.put('/update', async (req, res) => {
+    try {
+        // Extract user data from the request
+        const { name, email, lastName, role, id } = req.body;
+
+        // Insert user data into the database
+        const query = `
+        UPDATE users
+        SET name = ?, email = ?, lastName = ?, role = ?
+        WHERE id = ?;
+      `;
+
+        const params = [name, email, lastName, role, id];
+        await new Promise((resolve, reject) => {
+            connectionDB.query(query, params, (error, results, fields) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+
+        // Send response with success message and token
+        res.status(201)
+            .json({
+                success: true,
+                message: 'User created successfully!'
+            });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: 'An error occurred while creating the user.'
+        });
+    }
+});
 
 /**
  * POST /logout

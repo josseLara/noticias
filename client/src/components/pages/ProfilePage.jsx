@@ -11,6 +11,7 @@ function ProfilePage() {
     let userData = useSelector(state => state.user.userData);
     activeLinkBar('Account', true);
 
+    
     let inputFileParam = useMemo(() => {
         return [
             { label: "Nombre", inputType: "text", inputValue:  userData?.name ?? "" },
