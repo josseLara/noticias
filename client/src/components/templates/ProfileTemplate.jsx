@@ -3,17 +3,16 @@ import Layout from "./Layout";
 import ProfileCard from "../molecules/ProfileCard";
 import InfoProfile from "../molecules/InfoProfile";
 import Button from "../atoms/Button";
-import {BsSave} from 'react-icons/bs';
+import { BsSave } from 'react-icons/bs';
 
-function ProfileTemplate({sideBarData,tobBarData,inputFileParam,userData}) {
+function ProfileTemplate({ sideBarData, tobBarData, inputFileParam, userData, onUpdateUserHandler }) {
     return (
 
         <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
             <Content>
-                <ProfileCard userData={userData}/>
+                <ProfileCard userData={userData} />
                 <InfoProfile inputFileParam={inputFileParam} />
-
-                <Button>
+                <Button type="submit" onClick={onUpdateUserHandler}>
                     <BsSave />
                     Save Changes
                 </Button>

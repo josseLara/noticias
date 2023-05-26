@@ -1,4 +1,4 @@
-import { LOGIN_USER, REGISTER_USER, AUTH_USER } from '../_actions/types';
+import { LOGIN_USER, REGISTER_USER, AUTH_USER, UPDATE_USER } from '../_actions/types';
 
 // reducer: previous state + current state = next state
 export default function userReducer(state = {}, action) {
@@ -8,6 +8,9 @@ export default function userReducer(state = {}, action) {
 
     case REGISTER_USER:
       return { ...state, register: action.payload };
+
+    case UPDATE_USER:
+      return { ...state, userData: { ...state.userData, ...action.payload } };
 
     case AUTH_USER:
       return { ...state, userData: action.payload };

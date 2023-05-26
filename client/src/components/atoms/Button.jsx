@@ -1,12 +1,13 @@
 import { styled } from "styled-components";
 
-function Button({children}) {
-    return ( 
-        <Btn>{children}</Btn>
-     );
+function Button({ children,onClick }) {
+    return (
+        <Btn onClick={onClick}>{children}</Btn>
+    );
 }
 
 const Btn = styled.button`
+    width: fit-content;
     padding: 10px 15px;
     background-color: #ee7234;
     color: #000;
