@@ -13,7 +13,7 @@ export const sidebarData =
             { txt: 'Account', icon: <MdOutlineAccountCircle />, href:'/profile',classLink: null }
         ],
         [
-            { txt: 'Log out', icon: <IoExit /> }
+            { txt: 'Log out', icon: <IoExit />, href:'/login' }
         ]
     ],
     user: {

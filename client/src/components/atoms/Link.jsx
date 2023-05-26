@@ -1,12 +1,16 @@
 import { styled } from "styled-components";
 import { Link as RouterLink } from 'react-router-dom';
 
-function Link({ txt, icon = "", classLink = "", href = "", onCategoryNewsHandler = null }) {
+function Link({ txt, icon = "", classLink = "", href = "", onCategoryNewsHandler = null,onLogoutNewsHandler=null }) {
     return (
         <RouterLink to={href} onClick={(event) => { 
             if(onCategoryNewsHandler){
                 event.preventDefault();
                 onCategoryNewsHandler(txt.toLowerCase())
+            }
+            if(onLogoutNewsHandler) {
+                event.preventDefault();
+                onLogoutNewsHandler()
             }
              }}>
             <LinkItem className={classLink} active={classLink}>

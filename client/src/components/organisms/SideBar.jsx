@@ -3,7 +3,7 @@ import SideBarLinks from "../molecules/SideBarLinks";
 import BtnToggle from "../atoms/BtnToggle";
 
 
-function SideBar({user,links}) {
+function SideBar({user,links,onLogoutNewsHandler}) {
     return (
         <SideBarContent>
             
@@ -22,7 +22,7 @@ function SideBar({user,links}) {
             <SideBarLinks links={links[0]} />
 
             {/*  */}
-            <SideBarLinks links={links[1]} />
+            <SideBarLinks links={links[1]} onLogoutNewsHandler={onLogoutNewsHandler} />
             
             <div></div>
         </SideBarContent>

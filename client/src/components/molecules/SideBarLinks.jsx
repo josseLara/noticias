@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
 import Link from "../atoms/Link";
 
-function SideBarLinks({links}) {
+function SideBarLinks({links,onLogoutNewsHandler}) {
     return (
             
             <Links>
                 {
-                    links.map((link,index) => <Link {...link} key={index}/>)
+                    links.map((link,index) => <Link {...link} key={index} onLogoutNewsHandler={onLogoutNewsHandler}/>)
                 }
             </Links>
 

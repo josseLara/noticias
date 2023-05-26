@@ -30,28 +30,33 @@ function Layout({ children, sideBarData, tobBarData }) {
 
         activeLinkBar(categoryNews, false);
 
-            dispatch(getNewsGeneral(categoryNews)).then((response) => {
-                if (response.payload.status == "ok") {
+        dispatch(getNewsGeneral(categoryNews)).then((response) => {
+            if (response.payload.status == "ok") {
 
-                } else {
-                    alert('error save comment');
-                }
-            });
-        
-            if (location.pathname !== '/' || location.pathname !== '/index') {
-                // Navigate to the search page
-                navigate('/');
+            } else {
+                alert('error save comment');
             }
+        });
+
+        if (location.pathname !== '/' || location.pathname !== '/index') {
+            // Navigate to the search page
+            navigate('/');
+        }
     };
 
 
-    // 
+    // -----> Sidebar Logout <--------
+    const onLogoutNewsHandler = () => {
+        localStorage.removeItem('x_token');
+        navigate('/login');
+    };
+
     return (
         <>
             <TopBar {...tobBarData} onCategoryNewsHandler={onCategoryNewsHandler} onSearchHandler={onSearchHandler} />
 
             <Main>
-                <SideBar {...sideBarData} />
+                <SideBar {...sideBarData} onLogoutNewsHandler={onLogoutNewsHandler}/>
                 {children}
             </Main>
         </>
