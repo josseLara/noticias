@@ -165,7 +165,7 @@ routerUser.put('/update', async (req, res) => {
         res.status(201)
             .json({
                 success: true,
-                message: 'User created successfully!'
+                message: 'User update successfully!'
             });
     } catch (error) {
         console.error(error);

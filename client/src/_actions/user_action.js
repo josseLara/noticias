@@ -32,7 +32,7 @@ export function updateUser(dataToSubmit) {
   const request = axios
     .put('http://localhost:8080/api/user/update', dataToSubmit)
     .then((response) => response.data);
-
+    localStorage.removeItem('x_token');
   return {
     type: UPDATE_USER,
     payload: request,
