@@ -5,10 +5,10 @@ import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 import Layout from "./Layout";
 
-function LandingTemplate({sideBarData,tobBarData,newsData,onCategoryNewsHandler}) {
+function LandingTemplate({sideBarData,tobBarData,newsData}) {
     return (
 
-        <Layout sideBarData={sideBarData} tobBarData={tobBarData} onCategoryNewsHandler={onCategoryNewsHandler}>
+        <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
             <Content>
 
             {newsData && newsData.length > 1 && <MainNewsCard {...newsData[0]} />}

@@ -9,10 +9,10 @@ import activeLinkBar from "../../helpers/activeLinkBar";
 
 
 function LandingPage() {
-    let [categoryNews, setCategoryNews] = useState('general');
-    const onCategoryNewsHandler = (category) => {
-        setCategoryNews(category);
-    };
+    // let [categoryNews, setCategoryNews] = useState('general');
+    // const onCategoryNewsHandler = (category) => {
+    //     setCategoryNews(category);
+    // };
 
     let dispatch = useDispatch();
     const user = useSelector(state => state.user);
@@ -31,23 +31,32 @@ function LandingPage() {
                 }
             });
         }
-
-    }, [user])
-
-    useEffect(() => {
-        // data de news
-        activeLinkBar(categoryNews, false);
-
-        if (newsData) {
-            dispatch(getNewsGeneral(categoryNews)).then((response) => {
+       
+            dispatch(getNewsGeneral('general')).then((response) => {
                 if (response.payload.status == "ok") {
 
                 } else {
                     alert('error save comment');
                 }
             });
-        }
-    }, [categoryNews])
+        
+
+    }, [user])
+
+    // useEffect(() => {
+    //     // data de news
+    //     activeLinkBar(categoryNews, false);
+
+    //     if (newsData) {
+    //         dispatch(getNewsGeneral(categoryNews)).then((response) => {
+    //             if (response.payload.status == "ok") {
+
+    //             } else {
+    //                 alert('error save comment');
+    //             }
+    //         });
+    //     }
+    // }, [categoryNews])
 
     let handleSaveComment = () => {
         // para que guarda la noticia
@@ -71,9 +80,9 @@ function LandingPage() {
     };
 
     return (
-        <LandingTemplate sideBarData={sidebarData} onCategoryNewsHandler={onCategoryNewsHandler}
-            tobBarData={tobbarData} newsData={newsData?.allNews?.articles ?? null}
-            />
+        <LandingTemplate sideBarData={sidebarData}
+            tobBarData={tobbarData} newsData={newsData.allNews?.articles ?? null}
+        />
     );
 }
 
