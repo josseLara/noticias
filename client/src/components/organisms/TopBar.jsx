@@ -32,8 +32,8 @@ const TobBar = styled.header`
 
     img{
         grid-row: 1/2;
-        width: 50px;
-        height: 40px;
+        width: 70px;
+        height: 70px;
         object-fit: cover;
         margin-left: 20px;
     }
