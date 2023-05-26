@@ -4,7 +4,8 @@ import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onRemoveStorageHandler, onSaveStorageHandler } from '../../helpers/newsStorage';
 import ContextMenu from './ContextMenu';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function CardFooter({ title, urlToImage, url, publishedAt, author }) {
   let [bookmarkSeleted, setBookmarkSeleted] = useState(false);
@@ -32,6 +33,8 @@ function CardFooter({ title, urlToImage, url, publishedAt, author }) {
 // --------> Share <----------
 let onCopyLinkHandler = ()=>{
    navigator.clipboard.writeText(url ?? "")
+   setClickShare(false)
+   toast('🔗Copied Link 👌')
 }
 
   return (
@@ -47,6 +50,7 @@ let onCopyLinkHandler = ()=>{
         {bookmarkSeleted ? <BsBookmarkStarFill onClick={bookmarkHandler} /> : <BsBookmark onClick={bookmarkHandler} />}
         <BsShare onClick={() => setClickShare(!clickShare)} />
         <ContextMenu toggle={clickShare} onCopyLinkHandler={onCopyLinkHandler} />
+      <ToastContainer/>
       </div>
     </CardInfo>
 
