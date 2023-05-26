@@ -3,9 +3,12 @@ import { BsBookmark, BsShare, BsBookmarkStarFill } from 'react-icons/bs';
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { onRemoveStorageHandler, onSaveStorageHandler } from '../../helpers/newsStorage';
+import ContextMenu from './ContextMenu';
+
 
 function CardFooter({ title, urlToImage, url, publishedAt, author }) {
   let [bookmarkSeleted, setBookmarkSeleted] = useState(false);
+  let [clickShare, setClickShare] = useState(false);
   const user = useSelector((state) => state.user);
   const storageData = useSelector((state) => state.news.storageNews);
   const newsUpdate = useSelector((state) => state.news.allNews);
@@ -14,9 +17,9 @@ function CardFooter({ title, urlToImage, url, publishedAt, author }) {
   let bookmarkHandler = () => {
     setBookmarkSeleted(!bookmarkSeleted)
     if (!bookmarkSeleted) {
-      onSaveStorageHandler(dispatch,{ title, urlToImage, url, publishedAt, author },user)
+      onSaveStorageHandler(dispatch, { title, urlToImage, url, publishedAt, author }, user)
     } else {
-      onRemoveStorageHandler(dispatch,{ title, urlToImage, url, publishedAt, author },user)
+      onRemoveStorageHandler(dispatch, { title, urlToImage, url, publishedAt, author }, user)
     }
   }
 
@@ -24,7 +27,12 @@ function CardFooter({ title, urlToImage, url, publishedAt, author }) {
     if (storageData?.data) {
       setBookmarkSeleted(storageData.data.some((news) => news.url == url))
     }
-  }, [newsUpdate,storageData])
+  }, [newsUpdate, storageData])
+
+// --------> Share <----------
+let onCopyLinkHandler = ()=>{
+   navigator.clipboard.writeText(url ?? "")
+}
 
   return (
 
@@ -37,7 +45,8 @@ function CardFooter({ title, urlToImage, url, publishedAt, author }) {
 
       <div className="btns">
         {bookmarkSeleted ? <BsBookmarkStarFill onClick={bookmarkHandler} /> : <BsBookmark onClick={bookmarkHandler} />}
-        <BsShare />
+        <BsShare onClick={() => setClickShare(!clickShare)} />
+        <ContextMenu toggle={clickShare} onCopyLinkHandler={onCopyLinkHandler} />
       </div>
     </CardInfo>
 
@@ -55,9 +64,14 @@ const CardInfo = styled.div`
     gap: 10px;
     font-size: 1.3rem;
     z-index: 4;
+    position: relative;
 
     svg{
       z-index: 1000;
+      cursor: pointer;
+        &:hover{
+          color: #1e74f6;
+        }
     }
    }
 `;
