@@ -5,6 +5,7 @@ import LandingPage from './components/pages/LandingPage';
 import RegisterPage from './components/pages/RegisterPage';
 import StoragePage from './components/pages/StoragePage';
 import ProfilePage from './components/pages/Profilepage';
+import SearchPage from './components/pages/SearchPage';
 // --> Template
 
 
@@ -20,6 +21,7 @@ function App() {
   const AuthenticRegisterPage = Auth(RegisterPage, false);
   const AuthenticStoragePage = Auth(StoragePage, true);
   const AuthenticProfilePage = Auth(ProfilePage, true);
+  const AuthenticSearchPage = Auth(SearchPage, true);
 
 
   return (
@@ -31,6 +33,7 @@ function App() {
           <Route path="/register" element={<AuthenticRegisterPage />} />
           <Route path="/storage" element={<AuthenticStoragePage />} />
           <Route path="/profile" element={<AuthenticProfilePage />} />
+          <Route path="/search" element={<AuthenticSearchPage />} />
         </Routes>
       {/* </Layout> */}
     </Router>

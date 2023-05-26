@@ -1,20 +1,23 @@
 import styled from 'styled-components';
 import { BsBookmark, BsShare } from 'react-icons/bs';
 import CardFooter from '../molecules/CardFooter';
+import { Suspense } from 'react';
 
-function SecondaryNewsCard({title,urlToImage,url,publishedAt,source,author}) {
+function SecondaryNewsCard({ title, urlToImage, url, publishedAt, source, author }) {
     return (
-        <Card>
-            <img src={urlToImage} className="img" alt="new" />
+        <Suspense fallback={<h1>Loading...</h1>}>
+            <Card>
+                <img src={urlToImage} className="img" alt="new" />
 
-            <CardContent>
-                <span>{source?.name}</span>
-                <h3>{title}</h3>
-            </CardContent>
+                <CardContent>
+                    <span>{source?.name}</span>
+                    <h3>{title}</h3>
+                </CardContent>
 
-        <CardFooter 
-        author={author ?? ""} title={title} urlToImage={urlToImage} url={url} publishedAt={publishedAt} />
-        </Card>
+                <CardFooter
+                    author={author ?? ""} title={title} urlToImage={urlToImage} url={url} publishedAt={publishedAt} />
+            </Card>
+        </Suspense>
     );
 }
 

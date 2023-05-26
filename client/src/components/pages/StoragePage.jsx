@@ -2,7 +2,7 @@ import StorageTemplate from '../templates/StorageTemplate';
 import { sidebarData } from '../../data/sideBarData';
 import { tobbarData } from '../../data/tobbarData';
 import activeLinkBar from '../../helpers/activeLinkBar';
-import { useEffect, useState } from 'react';
+import { Suspense, useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getStorageNews } from '../../_actions/news_action';
 
@@ -29,12 +29,13 @@ function StoragePage() {
   activeLinkBar('Store', true);
 
   return (
-    
+  
     <StorageTemplate
       sideBarData={sidebarData}
       tobBarData={tobbarData}
       storageData={loading ?  []: storageNews }
-    />
+      />
+
   );
 }
 

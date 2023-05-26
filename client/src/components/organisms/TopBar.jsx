@@ -5,7 +5,7 @@ import { RiMessage3Fill } from 'react-icons/ri';
 import Search from "../molecules/Search";
 
 
-function TopBar({logo,links,onCategoryNewsHandler}) {
+function TopBar({logo,links,onCategoryNewsHandler,onSearchHandler}) {
     return (
         <TobBar>
             <img src={logo} alt="logo" />
@@ -17,7 +17,7 @@ function TopBar({logo,links,onCategoryNewsHandler}) {
                 <RiMessage3Fill />
             </IconsBar>
 
-            <Search />
+            <Search onSearchHandler={onSearchHandler}/>
         </TobBar>
     );
 }
