@@ -176,6 +176,44 @@ routerUser.put('/update', async (req, res) => {
     }
 });
 
+routerUser.put('/updatePhoto', async (req, res) => {
+    try {
+        // Extract user data from the request
+        const { photo, id } = req.body;
+
+        // Insert user data into the database
+        const query = `
+        UPDATE users
+        SET  photo = ?
+        WHERE id = ?;
+      `;
+
+        const params = [photo, id];
+        await new Promise((resolve, reject) => {
+            connectionDB.query(query, params, (error, results, fields) => {
+                if (error) {
+                    reject(error);
+                } else {
+                    resolve(results);
+                }
+            });
+        });
+
+        // Send response with success message and token
+        res.status(201)
+            .json({
+                success: true,
+                message: 'User update photo successfully!'
+            });
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({
+            success: false,
+            message: 'An error occurred while creating the user.'
+        });
+    }
+});
+
 /**
  * POST /logout
  * Create a new user.

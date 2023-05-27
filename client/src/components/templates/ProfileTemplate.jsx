@@ -5,12 +5,15 @@ import InfoProfile from "../molecules/InfoProfile";
 import Button from "../atoms/Button";
 import { BsSave } from 'react-icons/bs';
 
-function ProfileTemplate({ sideBarData, tobBarData, inputFileParam, userData, onUpdateUserHandler }) {
+function ProfileTemplate({ sideBarData, tobBarData, inputFileParam, userData, onUpdateUserHandler,onSubmitPhoto,onPhotoHandler,
+    onToggleFormPhotoHandler,toggleFormPhoto }) {
     return (
 
         <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
             <Content>
-                <ProfileCard userData={userData} />
+                <ProfileCard userData={userData} onSubmitPhoto={onSubmitPhoto} 
+                onPhotoHandler={onPhotoHandler} onToggleFormPhotoHandler={onToggleFormPhotoHandler}
+                toggleFormPhoto={toggleFormPhoto}/>
                 <InfoProfile inputFileParam={inputFileParam} />
                 <Button type="submit" onClick={onUpdateUserHandler}>
                     <BsSave />

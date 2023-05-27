@@ -1,13 +1,15 @@
 import { styled } from "styled-components";
 import Title from "../atoms/Title";
 import {RiImageEditLine} from 'react-icons/ri'
-function ProfileCard({userData}) {
+import ProfileImageForm from "./ProfileImageForm";
+function ProfileCard({userData,onSubmitPhoto,onPhotoHandler,onToggleFormPhotoHandler,toggleFormPhoto}) {
     return ( 
         <Card>
 
             <ProfileImagen>
-                <img src="https://i.pinimg.com/474x/b1/46/5a/b1465ad2c4cd89390b534ab9853df939.jpg" alt="photo" />
-                <RiImageEditLine/>
+                <img src={userData?.photo ?? "https://i.pinimg.com/474x/b1/46/5a/b1465ad2c4cd89390b534ab9853df939.jpg"} alt="photo" />
+                <RiImageEditLine onClick={onToggleFormPhotoHandler}/>
+               {toggleFormPhoto && <ProfileImageForm onSubmitPhoto={onSubmitPhoto} onPhotoHandler={onPhotoHandler}/>}
             </ProfileImagen>
 
             <Description>

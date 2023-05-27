@@ -39,6 +39,18 @@ export function updateUser(dataToSubmit) {
   };
 }
 
+export function updatePhotoUser(dataToSubmit) {
+  const request = axios
+    .put('http://localhost:8080/api/user/updatePhoto', dataToSubmit)
+    .then((response) => response.data);
+    // localStorage.removeItem('x_token');
+  return {
+    type: UPDATE_USER,
+    payload: request,
+  };
+}
+
+
 export function auth() {
 
   const token = localStorage.getItem('x_token');

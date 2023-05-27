@@ -16,8 +16,4 @@ export const sidebarData =
             { txt: 'Log out', icon: <IoExit />, href:'/login' }
         ]
     ],
-    user: {
-        img: "https://cdn.dribbble.com/userupload/5279196/file/original-e7ac5ca215cbd2df38d4165020026124.png?compress=1&resize=1504x1665&vertical=center",
-        name: "Alfaro"
-    }
 };

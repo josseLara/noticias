@@ -10,7 +10,6 @@ export default function userReducer(state = {}, action) {
       return { ...state, register: action.payload };
 
     case UPDATE_USER:
-      
       return { ...state, userData: { ...state.userData, ...action.payload } };
 
     case AUTH_USER:

@@ -1,17 +1,20 @@
 import { styled } from "styled-components";
 import SideBarLinks from "../molecules/SideBarLinks";
 import BtnToggle from "../atoms/BtnToggle";
+import { useSelector } from "react-redux";
 
 
-function SideBar({user,links,onLogoutNewsHandler}) {
+function SideBar({ links, onLogoutNewsHandler }) {
+    const user = useSelector(state => state.user.userData)
+    console.log(user)
     return (
         <SideBarContent>
-            
+
             <BtnToggle />
 
             {/* molecule */}
             <SideBarUser>
-                <img src={user.img} alt="user" />
+                <img src={user.photo} alt="user" />
                 <div>
                     <span className="name">{user.name}</span>
                     <span className="connect">connect</span>
@@ -23,7 +26,7 @@ function SideBar({user,links,onLogoutNewsHandler}) {
 
             {/*  */}
             <SideBarLinks links={links[1]} onLogoutNewsHandler={onLogoutNewsHandler} />
-            
+
             <div></div>
         </SideBarContent>
     );

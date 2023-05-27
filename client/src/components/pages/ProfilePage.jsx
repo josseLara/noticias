@@ -4,7 +4,7 @@ import ProfileTemplate from '../templates/ProfileTemplate';
 import activeLinkBar from '../../helpers/activeLinkBar';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from 'react';
-import { updateUser } from '../../_actions/user_action';
+import { updatePhotoUser, updateUser } from '../../_actions/user_action';
 
 
 
@@ -15,6 +15,9 @@ function ProfilePage() {
     const [lastName, setLastName] = useState('');
     const [role, setRole] = useState('');
     const [email, setEmail] = useState('');
+    const [photo, setPhoto] = useState('');
+    const [toggleFormPhoto, setToggleFormPhoto] = useState(false);
+
 
     const onNameHandler = (event) => {
         setName(event.currentTarget.value);
@@ -28,6 +31,15 @@ function ProfilePage() {
     const onEmailHandler = (event) => {
         setEmail(event.currentTarget.value);
     };
+
+    const onPhotoHandler = (event) => {
+        setPhoto(event.currentTarget.value);
+    };
+
+    const onToggleFormPhotoHandler = () => {
+        setToggleFormPhoto(!toggleFormPhoto);
+    };
+
 
     let inputFileParam = useMemo(() => {
         return [
@@ -57,9 +69,27 @@ function ProfilePage() {
         setEmail(userData?.email)
     } ,[userData])
 
+    // ----> Photo Update <----
+    const onSubmitPhoto =(event)=>{
+        event.preventDefault();
+        dispatch(updatePhotoUser({photo,id:userData.id})).then((response) => {
+            if (response.payload.success) {
+                onToggleFormPhotoHandler();
+            } else {
+                alert('Failed to sign up');
+            }
+        });
+    }
+
     return (
         <ProfileTemplate sideBarData={sidebarData} tobBarData={tobbarData}
-            inputFileParam={inputFileParam} userData={userData} onUpdateUserHandler={onUpdateUserHandler} />
+            inputFileParam={inputFileParam} userData={userData} 
+            onUpdateUserHandler={onUpdateUserHandler} 
+            
+            onPhotoHandler={onPhotoHandler}
+            onSubmitPhoto={onSubmitPhoto}
+            onToggleFormPhotoHandler={onToggleFormPhotoHandler}
+            toggleFormPhoto={toggleFormPhoto}/>
     );
 }
 
