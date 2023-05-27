@@ -4,19 +4,23 @@ import SideBar from "../organisms/SideBar";
 import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 import Layout from "./Layout";
+import { useContext } from "react";
+import { LandingContext } from "../../context/Landing/LandingContext";
 
-function LandingTemplate({sideBarData,tobBarData,newsData}) {
+function LandingTemplate() {
+    const {sidebarData, tobbarData, newsData} = useContext(LandingContext)
+ 
     return (
 
-        <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
+        <Layout sideBarData={sidebarData} tobBarData={tobbarData}>
             <Content>
 
-            {newsData && newsData.length > 1 && <MainNewsCard {...newsData[0]} />}
-            {newsData && newsData.length > 1 && <SecondaryNewsCard {...newsData[1]} />}
+            {newsData.allNews && <MainNewsCard {...newsData.allNews.articles[0]} />}
+            {newsData.allNews && <SecondaryNewsCard {...newsData.allNews.articles[1]} />}
 
                 <Cards className="cards">
-                   {newsData &&
-                    newsData.slice(2) .map((news,index)=> <SecondaryNewsCard  {...news}  key={index}/>)}
+                   {newsData.allNews &&
+                    newsData.allNews.articles.slice(2) .map((news,index)=> <SecondaryNewsCard  {...news}  key={index}/>)}
                 </Cards>
 
             </Content>

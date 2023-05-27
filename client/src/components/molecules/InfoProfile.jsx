@@ -2,8 +2,12 @@ import { styled } from "styled-components";
 import InputField from "../atoms/InputField";
 import {BsSave} from 'react-icons/bs';
 import Button from "../atoms/Button";
+import { useContext } from "react";
+import { ProfileContext } from "../../context/Profile/ProfileContext";
 
-function InfoProfile({ inputFileParam }) {
+function InfoProfile() {
+    const {inputFileParam} = useContext(ProfileContext);
+
     return (
         <Info onSubmit={() => null}>
             {inputFileParam.map((inputProps, index) => <InputField {...inputProps} key={index} />)}

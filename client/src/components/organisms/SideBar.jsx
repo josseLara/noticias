@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 
 function SideBar({ links, onLogoutNewsHandler }) {
     const user = useSelector(state => state.user.userData)
-    console.log(user)
+  
     return (
         <SideBarContent>
 
@@ -14,9 +14,9 @@ function SideBar({ links, onLogoutNewsHandler }) {
 
             {/* molecule */}
             <SideBarUser>
-                <img src={user.photo} alt="user" />
+                <img src={user?.photo} alt="user" />
                 <div>
-                    <span className="name">{user.name}</span>
+                    <span className="name">{user?.name}</span>
                     <span className="connect">connect</span>
                 </div>
             </SideBarUser>

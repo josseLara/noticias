@@ -4,17 +4,17 @@ import ProfileCard from "../molecules/ProfileCard";
 import InfoProfile from "../molecules/InfoProfile";
 import Button from "../atoms/Button";
 import { BsSave } from 'react-icons/bs';
+import { useContext } from "react";
+import { ProfileContext } from "../../context/Profile/ProfileContext";
 
-function ProfileTemplate({ sideBarData, tobBarData, inputFileParam, userData, onUpdateUserHandler,onSubmitPhoto,onPhotoHandler,
-    onToggleFormPhotoHandler,toggleFormPhoto }) {
+function ProfileTemplate() {
+        const {sidebarData, tobbarData,onUpdateUserHandler} = useContext(ProfileContext);
     return (
 
-        <Layout sideBarData={sideBarData} tobBarData={tobBarData}>
+        <Layout sideBarData={sidebarData} tobBarData={tobbarData}>
             <Content>
-                <ProfileCard userData={userData} onSubmitPhoto={onSubmitPhoto} 
-                onPhotoHandler={onPhotoHandler} onToggleFormPhotoHandler={onToggleFormPhotoHandler}
-                toggleFormPhoto={toggleFormPhoto}/>
-                <InfoProfile inputFileParam={inputFileParam} />
+                <ProfileCard />
+                <InfoProfile  />
                 <Button type="submit" onClick={onUpdateUserHandler}>
                     <BsSave />
                     Save Changes

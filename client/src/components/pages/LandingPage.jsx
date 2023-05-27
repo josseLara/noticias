@@ -6,13 +6,10 @@ import { tobbarData } from "../../data/tobbarData";
 import { useEffect, useState } from "react";
 import { getNewsGeneral, getStorageNews } from "../../_actions/news_action";
 import activeLinkBar from "../../helpers/activeLinkBar";
+import LandingState from "../../context/Landing/LandingState";
 
 
 function LandingPage() {
-    // let [categoryNews, setCategoryNews] = useState('general');
-    // const onCategoryNewsHandler = (category) => {
-    //     setCategoryNews(category);
-    // };
 
     let dispatch = useDispatch();
     const user = useSelector(state => state.user);
@@ -31,58 +28,23 @@ function LandingPage() {
                 }
             });
         }
-       
-            dispatch(getNewsGeneral('general')).then((response) => {
-                if (response.payload.status == "ok") {
 
-                } else {
-                    alert('error save comment');
-                }
-            });
-        
+        dispatch(getNewsGeneral('general')).then((response) => {
+            if (response.payload.status == "ok") {
+
+            } else {
+                alert('error save comment');
+            }
+        });
+
 
     }, [user])
 
-    // useEffect(() => {
-    //     // data de news
-    //     activeLinkBar(categoryNews, false);
-
-    //     if (newsData) {
-    //         dispatch(getNewsGeneral(categoryNews)).then((response) => {
-    //             if (response.payload.status == "ok") {
-
-    //             } else {
-    //                 alert('error save comment');
-    //             }
-    //         });
-    //     }
-    // }, [categoryNews])
-
-    let handleSaveComment = () => {
-        // para que guarda la noticia
-        // dispatch(saveComment(body)).then((response) => {
-        //     if (response.payload.success) {
-
-        //     } else {
-        //       alert('error save comment');
-        //     }
-        //   });
-        // console.log(user.userData.email)
-
-        // ? obtener los comment por id
-        // dispatch(getComment({id: 1})).then((response) => {
-        //     if (response.payload.success) {
-        //         console.log(response.payload)
-        //     } else {
-        //         alert('error save comment');
-        //     }
-        // });
-    };
 
     return (
-        <LandingTemplate sideBarData={sidebarData}
-            tobBarData={tobbarData} newsData={newsData.allNews?.articles ?? null}
-        />
+        <LandingState states={{sidebarData, tobbarData, newsData}}>
+            <LandingTemplate sideBarData={sidebarData} tobBarData={tobbarData} />
+        </LandingState>
     );
 }
 

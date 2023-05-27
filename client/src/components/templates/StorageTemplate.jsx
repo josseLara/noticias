@@ -2,7 +2,6 @@ import SecondaryNewsCard from "../organisms/SecondaryNewsCard";
 import { styled } from "styled-components";
 import Layout from "./Layout";
 import Title from "../atoms/Title";
-import { useSelector } from "react-redux";
 
 
 function StoragePageTemplate( {sideBarData, tobBarData,storageData } ) {

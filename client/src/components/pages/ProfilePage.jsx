@@ -5,6 +5,7 @@ import activeLinkBar from '../../helpers/activeLinkBar';
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from 'react';
 import { updatePhotoUser, updateUser } from '../../_actions/user_action';
+import ProfileState from '../../context/Profile/ProfileState';
 
 
 
@@ -53,7 +54,7 @@ function ProfilePage() {
     activeLinkBar('Account', true);
 
     const onUpdateUserHandler = () => {
-        dispatch(updateUser({name,lastName,role,email,id:userData.id})).then((response) => {
+        dispatch(updateUser({ name, lastName, role, email, id: userData.id })).then((response) => {
             if (response.payload.success) {
 
             } else {
@@ -62,17 +63,17 @@ function ProfilePage() {
         });
     };
 
-    useEffect(()=>{
+    useEffect(() => {
         setName(userData?.name)
         setLastName(userData?.lastName)
         setRole(userData?.role)
         setEmail(userData?.email)
-    } ,[userData])
+    }, [userData])
 
     // ----> Photo Update <----
-    const onSubmitPhoto =(event)=>{
+    const onSubmitPhoto = (event) => {
         event.preventDefault();
-        dispatch(updatePhotoUser({photo,id:userData.id})).then((response) => {
+        dispatch(updatePhotoUser({ photo, id: userData.id })).then((response) => {
             if (response.payload.success) {
                 onToggleFormPhotoHandler();
             } else {
@@ -82,14 +83,22 @@ function ProfilePage() {
     }
 
     return (
-        <ProfileTemplate sideBarData={sidebarData} tobBarData={tobbarData}
-            inputFileParam={inputFileParam} userData={userData} 
-            onUpdateUserHandler={onUpdateUserHandler} 
-            
-            onPhotoHandler={onPhotoHandler}
-            onSubmitPhoto={onSubmitPhoto}
-            onToggleFormPhotoHandler={onToggleFormPhotoHandler}
-            toggleFormPhoto={toggleFormPhoto}/>
+        <ProfileState states={
+            {
+                sidebarData,
+                tobbarData,
+                inputFileParam,
+                userData,
+                onUpdateUserHandler,
+                // Photo
+                onPhotoHandler,
+                onSubmitPhoto,
+                onToggleFormPhotoHandler,
+                toggleFormPhoto
+            }
+        }>
+            <ProfileTemplate />
+        </ProfileState>
     );
 }
 

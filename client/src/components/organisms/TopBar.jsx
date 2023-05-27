@@ -12,11 +12,6 @@ function TopBar({logo,links,onCategoryNewsHandler,onSearchHandler}) {
 
             <TobBarLinks links={links} onCategoryNewsHandler={onCategoryNewsHandler}/>
 
-            <IconsBar>
-                <IoMdNotifications />
-                <RiMessage3Fill />
-            </IconsBar>
-
             <Search onSearchHandler={onSearchHandler}/>
         </TobBar>
     );
@@ -48,23 +43,6 @@ const TobBar = styled.header`
     }
 `;
 
-const IconsBar = styled.div`
-    display: flex;
-    align-items: center;
-    font-size: 1.5rem;
-    gap: 6px;
-    margin-left: 27%;
-    svg:hover{
-        cursor: pointer;
-        color: #1E74F6;
-    }
 
-    @media (max-width:700px) {
-        justify-self: center;
-        grid-row: 2/3;
-        margin-left: 0px;
-       
-    }
-`;
 
 export default TopBar;

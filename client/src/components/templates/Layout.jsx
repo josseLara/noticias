@@ -4,12 +4,13 @@ import TopBar from "../organisms/TopBar";
 import { styled } from "styled-components";
 import { getNewsGeneral, getSearchNews } from "../../_actions/news_action";
 import { useLocation, useNavigate } from "react-router-dom";
-import { useEffect } from "react";
+import { useContext, useEffect } from "react";
 import activeLinkBar from "../../helpers/activeLinkBar";
+import { LandingContext } from "../../context/Landing/LandingContext";
 
 
 function Layout({ children, sideBarData, tobBarData }) {
-
+   
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();

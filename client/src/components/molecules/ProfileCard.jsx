@@ -2,7 +2,11 @@ import { styled } from "styled-components";
 import Title from "../atoms/Title";
 import {RiImageEditLine} from 'react-icons/ri'
 import ProfileImageForm from "./ProfileImageForm";
-function ProfileCard({userData,onSubmitPhoto,onPhotoHandler,onToggleFormPhotoHandler,toggleFormPhoto}) {
+import { useContext } from "react";
+import { ProfileContext } from "../../context/Profile/ProfileContext";
+function ProfileCard() {
+    const {userData,onSubmitPhoto,onPhotoHandler,onToggleFormPhotoHandler,toggleFormPhoto} = useContext(ProfileContext);
+
     return ( 
         <Card>
 
