@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { REGISTER_USER, LOGIN_USER, AUTH_USER, UPDATE_USER } from './types';
 
+// Logs in a user with the provided data
 export function loginUser(dataToSubmit) {
   const request = axios
     .post('http://localhost:8080/api/user/login', dataToSubmit)
@@ -17,6 +18,7 @@ export function loginUser(dataToSubmit) {
   };
 }
 
+// Registers a new user with the provided data
 export function registerUser(dataToSubmit) {
   const request = axios
     .post('http://localhost:8080/api/user/register', dataToSubmit)
@@ -28,6 +30,7 @@ export function registerUser(dataToSubmit) {
   };
 }
 
+// Updates a user's information with the provided data
 export function updateUser(dataToSubmit) {
   const request = axios
     .put('http://localhost:8080/api/user/update', dataToSubmit)
@@ -39,6 +42,7 @@ export function updateUser(dataToSubmit) {
   };
 }
 
+// Updates a user's profile photo with the provided data
 export function updatePhotoUser(dataToSubmit) {
   const request = axios
     .put('http://localhost:8080/api/user/updatePhoto', dataToSubmit)
@@ -50,7 +54,7 @@ export function updatePhotoUser(dataToSubmit) {
   };
 }
 
-
+// Authenticates a user with the stored token
 export function auth() {
 
   const token = localStorage.getItem('x_token');
