@@ -6,23 +6,26 @@ import { styled } from "styled-components";
 import Layout from "./Layout";
 import { useContext } from "react";
 import { LandingContext } from "../../context/Landing/LandingContext";
+import Pagination from "../molecules/Pagination";
 
 function LandingTemplate() {
     const {sidebarData, tobbarData, newsData} = useContext(LandingContext)
  
     return (
 
-        <Layout sideBarData={sidebarData} tobBarData={tobbarData}>
+        <Layout sideBarData={sidebarData} tobBarData={tobbarData} >
             <Content>
 
-            {newsData.allNews && <MainNewsCard {...newsData.allNews.articles[0]} />}
-            {newsData.allNews && <SecondaryNewsCard {...newsData.allNews.articles[1]} />}
+            {newsData.allNews && <MainNewsCard {...newsData?.allNews.articles[0]} />}
+            {newsData.allNews && <SecondaryNewsCard {...newsData?.allNews.articles[1]} />}
 
                 <Cards className="cards">
                    {newsData.allNews &&
                     newsData.allNews.articles.slice(2) .map((news,index)=> <SecondaryNewsCard  {...news}  key={index}/>)}
                 </Cards>
-
+                
+                {/* --> Pagination */}
+                    <Pagination />
             </Content>
         </Layout>
 

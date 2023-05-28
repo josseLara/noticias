@@ -10,7 +10,8 @@ import { LandingContext } from "../../context/Landing/LandingContext";
 
 
 function Layout({ children, sideBarData, tobBarData }) {
-   
+    const {onCategoryPaginationHandler} = useContext(LandingContext)
+
     const dispatch = useDispatch();
     const location = useLocation();
     const navigate = useNavigate();
@@ -28,21 +29,23 @@ function Layout({ children, sideBarData, tobBarData }) {
     // -----> TopBar Category <-------
 
     const onCategoryNewsHandler = (categoryNews) => {
-
         activeLinkBar(categoryNews, false);
-
+        
+        
         dispatch(getNewsGeneral(categoryNews)).then((response) => {
             if (response.payload.status == "ok") {
-
+                
             } else {
                 alert('error save comment');
             }
         });
-
+        
         if (location.pathname !== '/' || location.pathname !== '/index') {
             // Navigate to the search page
             navigate('/');
         }
+        // cambia la cateria de landing pad
+        onCategoryPaginationHandler(categoryNews);
     };
 
 

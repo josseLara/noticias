@@ -14,6 +14,17 @@ export function getNewsGeneral(category) {
   };
 }
 
+export function getNewsPagination(category,pagination) {
+  const request = axios
+    .get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=20&page=${pagination}&apiKey=`)
+    .then((response) => response.data);
+
+  return {
+    type: ALL_NEWS,
+    payload: request,
+  };
+}
+
 export function getSearchNews(search) {
   const request = axios
     .get(`https://newsapi.org/v2/top-headlines?q=${search}&apiKey=`)
