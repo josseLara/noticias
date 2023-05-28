@@ -4,6 +4,7 @@ import { MdOutlineAccountCircle, } from 'react-icons/md';
 import { AiOutlineInbox } from 'react-icons/ai'
 import { IoExit } from 'react-icons/io5';
 
+// Define an object called sidebarData with an array of links
 export const sidebarData =
 {
     links: [

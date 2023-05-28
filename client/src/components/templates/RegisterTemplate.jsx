@@ -1,14 +1,6 @@
 import { styled } from "styled-components";
 import AuthCard from "../organisms/AuthCard";
 
-let inputFileParam = [
-    { label: "Name", inputValue: "", inputType: "text" },
-    { label: "LastName", inputValue: "", inputType: "text" },
-    { label: "Email", inputValue: "", inputType: "email" },
-    { label: "Password", inputValue: "", inputType: "password" },
-
-]
-
 function RegisterTemplate({ inputFileParam, btnText, title, link,onSubmitForm}) {
     return (
         <Content>
