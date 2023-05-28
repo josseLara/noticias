@@ -12,6 +12,8 @@ import ProfileState from '../../context/Profile/ProfileState';
 function ProfilePage() {
     const dispatch = useDispatch();
     let userData = useSelector(state => state.user.userData);
+
+    // Define state variables for form inputs
     const [name, setName] = useState('');
     const [lastName, setLastName] = useState('');
     const [role, setRole] = useState('');
@@ -19,7 +21,7 @@ function ProfilePage() {
     const [photo, setPhoto] = useState('');
     const [toggleFormPhoto, setToggleFormPhoto] = useState(false);
 
-
+    // Define event handlers for form inputs
     const onNameHandler = (event) => {
         setName(event.currentTarget.value);
     };
@@ -32,16 +34,14 @@ function ProfilePage() {
     const onEmailHandler = (event) => {
         setEmail(event.currentTarget.value);
     };
-
     const onPhotoHandler = (event) => {
         setPhoto(event.currentTarget.value);
     };
-
     const onToggleFormPhotoHandler = () => {
         setToggleFormPhoto(!toggleFormPhoto);
     };
 
-
+    // Define form input parameters using useMemo to avoid unnecessary re-renders
     let inputFileParam = useMemo(() => {
         return [
             { label: "Nombre", inputType: "text", onChange: onNameHandler, inputValue: userData?.name ?? "" },
@@ -51,18 +51,21 @@ function ProfilePage() {
         ]
     }, [userData]);
 
+    // Set active link bar
     activeLinkBar('Account', true);
 
+    // Define handler for updating user data
     const onUpdateUserHandler = () => {
         dispatch(updateUser({ name, lastName, role, email, id: userData.id })).then((response) => {
             if (response.payload.success) {
-
+                // TODO: Handle success
             } else {
                 alert('Failed to sign up');
             }
         });
     };
 
+    // Set form input values on mount and when userData changes
     useEffect(() => {
         setName(userData?.name)
         setLastName(userData?.lastName)
@@ -70,7 +73,7 @@ function ProfilePage() {
         setEmail(userData?.email)
     }, [userData])
 
-    // ----> Photo Update <----
+    // Define handler for submitting photo update form
     const onSubmitPhoto = (event) => {
         event.preventDefault();
         dispatch(updatePhotoUser({ photo, id: userData.id })).then((response) => {
@@ -81,6 +84,7 @@ function ProfilePage() {
             }
         });
     }
+
 
     return (
         <ProfileState states={
@@ -103,3 +107,4 @@ function ProfilePage() {
 }
 
 export default ProfilePage;
+

@@ -8,11 +8,13 @@ function RegisterPage() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
+  // Define state variables for email, password, name, and confirm password
   const [Email, setEmail] = useState('');
   const [Password, setPassword] = useState('');
   const [Name, setName] = useState('');
   const [ConfirmPassword, setConfirmPassword] = useState('');
 
+  // Define event handlers for changes to email, password, name, and confirm password
   const onEmailHandler = (event) => {
     setEmail(event.currentTarget.value);
   };
@@ -29,13 +31,16 @@ function RegisterPage() {
     setConfirmPassword(event.currentTarget.value);
   };
 
+  // Define event handler for form submission
   const onSubmitHandler = (event) => {
     event.preventDefault();
 
+    // Check if password and confirm password match
     if (Password !== ConfirmPassword) {
       return alert('Password and Confirm Password must be the same.');
     }
 
+    // Create object with user information
     let body = {
       email: Email,
       password: Password,
@@ -45,6 +50,7 @@ function RegisterPage() {
       tokenExp: 1
     };
 
+    // Dispatch action to register user
     dispatch(registerUser(body)).then((response) => {
       if (response.payload.success) {
         navigate('/login');
@@ -54,6 +60,7 @@ function RegisterPage() {
     });
   };
 
+  // Define input fields for form
   const inputFileParam = useMemo(() => {
     return [
       { label: "Name", inputValue: "", inputType: "Name", onChange: onNameHandler, placeHolder: "Name" },
@@ -62,62 +69,8 @@ function RegisterPage() {
       { label: "Confirm Password", inputValue: "", inputType: "password", onChange: onConfirmPasswordHandler, placeHolder: "confirm password" },
     ];
   }, []);
-
+  
   return (
-    // <Container>
-    //   <RegisterForm
-    //     style={{ display: 'flex', flexDirection: 'column' }}
-    //     onSubmit={onSubmitHandler}
-    //   >
-    //     <Title>Create an account</Title>
-    //     <InputContainer>
-    //       <label htmlFor="">Email</label>
-    //       <input
-    //         type="email"
-    //         value={Email}
-    //         onChange={onEmailHandler}
-    //         placeholder="email"
-    //         required="required"
-    //       />
-    //     </InputContainer>
-
-    //     <InputContainer>
-    //       <label htmlFor="">Name</label>
-    //       <input
-    //         type="text"
-    //         value={Name}
-    //         onChange={onNameHandler}
-    //         placeholder="name"
-    //         required="required"
-    //       />
-    //     </InputContainer>
-
-    //     <InputContainer>
-    //       <label htmlFor="">Password</label>
-    //       <input
-    //         type="password"
-    //         value={Password}
-    //         onChange={onPasswordHandler}
-    //         placeholder="password"
-    //         required="required"
-    //       />
-    //     </InputContainer>
-
-    //     <InputContainer>
-    //       <label htmlFor="">Confirm Password</label>
-    //       <input
-    //         type="password"
-    //         value={ConfirmPassword}
-    //         onChange={onConfirmPasswordHandler}
-    //         placeholder="confirm password"
-    //         required="required"
-    //       />
-    //     </InputContainer>
-
-    //     <SubmitButton type="submit">Create account</SubmitButton>
-    //   </RegisterForm>
-    // </Container>
-
     <RegisterTemplate 
     inputFileParam={inputFileParam} btnText="Send" title="Register" 
     link="I'm already registered" onSubmitForm={onSubmitHandler}
@@ -127,3 +80,7 @@ function RegisterPage() {
 
 
 export default RegisterPage;
+
+
+
+

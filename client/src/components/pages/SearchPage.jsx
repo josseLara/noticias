@@ -7,7 +7,6 @@ function SearchPage() {
     const searchNews = useSelector( state => state.news.searchNews?.articles) ?? [];
     
     return ( 
-
         <SearchTemplate sideBarData={sidebarData} tobBarData={tobbarData} searchNews={searchNews}/>
     
      );
