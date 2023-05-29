@@ -1,9 +1,9 @@
 import { styled } from "styled-components";
 import {GrMenu} from 'react-icons/gr';
 
-function BtnToggle() {
+function BtnToggle({click}) {
     return (
-        <Button>
+        <Button onClick={click}>
             <GrMenu />
         </Button>
     );

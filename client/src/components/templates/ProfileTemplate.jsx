@@ -28,6 +28,7 @@ function ProfileTemplate() {
 // 
 
 const Content = styled.div`
+overflow-x: hidden;
        width: 100%;
        height: 89vh;
         display: flex;

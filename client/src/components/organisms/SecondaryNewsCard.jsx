@@ -1,9 +1,9 @@
 import styled from 'styled-components';
-import { BsBookmark, BsShare } from 'react-icons/bs';
 import CardFooter from '../molecules/CardFooter';
 import { Suspense } from 'react';
 
 function SecondaryNewsCard({ title, urlToImage, url, publishedAt, source, author }) {
+    const onLinkGHandler = ()=> location.href = url;
     return (
         <Suspense fallback={<h1>Loading...</h1>}>
             <Card>
@@ -11,7 +11,7 @@ function SecondaryNewsCard({ title, urlToImage, url, publishedAt, source, author
 
                 <CardContent>
                     <span>{source?.name}</span>
-                    <h3>{title}</h3>
+                    <h3 onClick={onLinkGHandler}>{title}</h3>
                 </CardContent>
 
                 <CardFooter
@@ -50,6 +50,12 @@ let CardContent = styled.div`
     h3{
         font-size: 1.2rem;
         margin: 0;
+
+        &:hover{
+            cursor: pointer;
+            text-decoration: underline;
+            color: #1e74f6;
+        }
     }
   
 `

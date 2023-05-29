@@ -38,7 +38,7 @@ const TobBar = styled.header`
       height: 130px;
       display: grid;
       grid-column-end: span;
-      grid-template-columns: repeat(2,1fr);
+      grid-template-columns: 200px 1fr;
      
     }
 `;

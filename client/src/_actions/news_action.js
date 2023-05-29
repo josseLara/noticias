@@ -5,6 +5,7 @@ import { ALL_NEWS, REMOVE_STORAGE_NEWS, SEARCH_NEWS, STORAGE_NEWS } from './type
 
 // Action creator to get all news from a category
 export function getNewsGeneral(category) {
+  
   const request = axios
     .get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=`)
     .then((response) => response.data);

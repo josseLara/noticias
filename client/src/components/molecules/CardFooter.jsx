@@ -42,7 +42,7 @@ function CardFooter({ title, urlToImage, url, publishedAt, author }) {
   return (
     <CardInfo>
       <CardUserDetails>
-        <img src="https://cdn.dribbble.com/userupload/5279195/file/original-5d3fba6e970888c73e4c8a34a6df91ad.png?compress=1&resize=1504x1128" alt="" />
+        <img src="https://images.pexels.com/photos/1121796/pexels-photo-1121796.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" alt="" />
         <span>{author}</span>
       </CardUserDetails>
 
@@ -89,6 +89,7 @@ const CardUserDetails = styled.div`
     width: 40px;
     height: 40px;
     border-radius: 100%;
+    object-fit: cover;
   }
   span {
     font-size: 1rem;

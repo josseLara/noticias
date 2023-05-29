@@ -56,7 +56,7 @@ function LoginPage() {
   return (
     <LoginTemplate 
     inputFileParam={inputFileParam} btnText="Sig In" title="Login" 
-    link="I forgot the password" onSubmitForm={onSubmitHandler}
+    link="I am not registered" onSubmitForm={onSubmitHandler}
     />
   );
 }

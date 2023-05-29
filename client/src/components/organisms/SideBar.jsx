@@ -2,48 +2,65 @@ import { styled } from "styled-components";
 import SideBarLinks from "../molecules/SideBarLinks";
 import BtnToggle from "../atoms/BtnToggle";
 import { useSelector } from "react-redux";
-
+import { useSpring, animated } from 'react-spring';
+import { useState } from "react";
 
 function SideBar({ links, onLogoutNewsHandler }) {
     const user = useSelector(state => state.user.userData)
-  
+    // animations spring
+    const [sidebarToggle, setSidebarToggle] = useState(false);
+    const ShowAnim = useSpring({
+        from: { x: '-210%', position: 'fixed', zIndex: 100 },
+        to: { x: '0%', position: 'fixed' },
+        loop: false,
+        reverse: sidebarToggle,
+        config: { mass: 2, tension: 2500, friction: 1200 },
+    });
+
     return (
-        <SideBarContent>
+        <Content>
+            <BtnToggle click={() => setSidebarToggle(!sidebarToggle)} />
+            <animated.aside style={ShowAnim}>
+                <SideBarContent>
 
-            <BtnToggle />
+                    {/* molecule */}
+                    <SideBarUser>
+                        <img src={user?.photo ?? "https://images.pexels.com/photos/1666779/pexels-photo-1666779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2"} alt="user" />
+                        <div>
+                            <span className="name">{user?.name}</span>
+                            <span className="connect">connect</span>
+                        </div>
+                    </SideBarUser>
+                    {/*  */}
 
-            {/* molecule */}
-            <SideBarUser>
-                <img src={user?.photo} alt="user" />
-                <div>
-                    <span className="name">{user?.name}</span>
-                    <span className="connect">connect</span>
-                </div>
-            </SideBarUser>
-            {/*  */}
+                    <SideBarLinks links={links[0]} />
 
-            <SideBarLinks links={links[0]} />
+                    {/*  */}
+                    <SideBarLinks links={links[1]} onLogoutNewsHandler={onLogoutNewsHandler} />
 
-            {/*  */}
-            <SideBarLinks links={links[1]} onLogoutNewsHandler={onLogoutNewsHandler} />
-
-            <div></div>
-        </SideBarContent>
+                    <div></div>
+                </SideBarContent>
+            </animated.aside>
+        </Content>
     );
 }
 
+let Content = styled.div`
 
+    aside{
+        
+        @media (min-width: 700px){
+            position:relative !important;
+         }
+        }
+`;
 let SideBarContent = styled.aside`
-    width: 200px;
+    width: 160px;
     height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
     background-color: #0d1117;
-    @media (max-width:700px) {
-        position: absolute;
-          left: 100vw;
-    }
 `;
 
 let SideBarUser = styled.aside`

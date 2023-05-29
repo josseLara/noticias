@@ -9,8 +9,7 @@ import activeLinkBar from "../../helpers/activeLinkBar";
 import { LandingContext } from "../../context/Landing/LandingContext";
 
 
-function Layout({ children, sideBarData, tobBarData }) {
-    const {onCategoryPaginationHandler} = useContext(LandingContext)
+function Layout({ children, sideBarData, tobBarData,onCategoryPaginationHandler=null }) {
 
     const dispatch = useDispatch();
     const location = useLocation();

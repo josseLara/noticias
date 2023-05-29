@@ -1,6 +1,7 @@
 import { styled } from "styled-components";
 import FormAuth from "../molecules/FormAuth";
 import Title from "../atoms/Title";
+import { Link } from "react-router-dom";
 
 
 function AuthCard({inputFileParam,btnText,title,link, onSubmitForm}) {
@@ -8,7 +9,7 @@ function AuthCard({inputFileParam,btnText,title,link, onSubmitForm}) {
         <Card>
             <Title>{title}</Title>
             <FormAuth inputFileParam={inputFileParam} btnText={btnText} onSubmitForm={onSubmitForm}/>
-            <a href="">{link}</a>        
+            <Link to={ link == "I am not registered" ? "/register" : "/login" }>{link}</Link>        
         </Card>
      );
 }
