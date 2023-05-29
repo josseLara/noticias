@@ -7,7 +7,7 @@ import { ALL_NEWS, REMOVE_STORAGE_NEWS, SEARCH_NEWS, STORAGE_NEWS } from './type
 export function getNewsGeneral(category) {
   
   const request = axios
-    .get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=`)
+    .get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&apiKey=${env.process.KEY}`) // KEY
     .then((response) => response.data);
 
   return {
@@ -19,7 +19,7 @@ export function getNewsGeneral(category) {
 // Action creator to get news from a category with pagination
 export function getNewsPagination(category,pagination) {
   const request = axios
-    .get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=20&page=${pagination}&apiKey=`)
+    .get(`https://newsapi.org/v2/top-headlines?country=us&category=${category}&pageSize=20&page=${pagination}&apiKey=${env.process.KEY}`)
     .then((response) => response.data);
 
   return {
@@ -31,7 +31,7 @@ export function getNewsPagination(category,pagination) {
 // Action creator to search news
 export function getSearchNews(search) {
   const request = axios
-    .get(`https://newsapi.org/v2/top-headlines?q=${search}&apiKey=`)
+    .get(`https://newsapi.org/v2/top-headlines?q=${search}&apiKey=${env.process.KEY}`)
     .then((response) => response.data);
 
   return {
