@@ -1,5 +1,10 @@
 ## Noticias
 
+
+|____ 📁Client
+        
+|____ 📁Server
+
 ![image](https://github.com/josseLara/noticias/assets/99273526/7d87e430-60de-4c25-9160-e6b39c502839)
 
 ![image](https://github.com/josseLara/noticias/assets/99273526/c270549c-c918-417a-aab6-8736c175924c)
